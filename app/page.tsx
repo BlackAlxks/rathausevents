@@ -76,10 +76,12 @@ export default function Home() {
                 von 10 bis 200 Personen nutzen.
               </p>
             </div>
-            <div className="bg-amber-50 p-6 rounded-lg">
-              <div className="aspect-video bg-amber-100 rounded flex items-center justify-center text-amber-700 font-medium">
-                Bild Rathaus Außenansicht
-              </div>
+            <div className="bg-amber-50 p-6 rounded-lg overflow-hidden">
+              <img
+                src="/images/Außenansicht/Outside_rathaus_outside_view.jpg"
+                alt="Außenansicht des historischen Rathauses Friedrichshagen mit Fassade und Eingangsbereich"
+                className="w-full h-full object-cover rounded"
+              />
             </div>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -143,9 +145,11 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
-              <div className="aspect-video bg-amber-100 flex items-center justify-center text-amber-700 font-medium">
-                Bild Alter Ratssaal
-              </div>
+              <img
+                src="/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-13.jpg"
+                alt="Festlich gedeckte Tafel im Alten Ratssaal für eine unvergessliche Feier"
+                className="w-full aspect-video object-cover"
+              />
               <div className="p-6">
                 <h3 className="text-xl font-bold text-neutral-900 mb-2">
                   Alter Ratssaal
@@ -163,9 +167,11 @@ export default function Home() {
             </div>
 
             <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
-              <div className="aspect-video bg-amber-100 flex items-center justify-center text-amber-700 font-medium">
-                Bild Ratskeller
-              </div>
+              <img
+                src="/images/Ratskeller/Ratskeller__55A1776.jpg"
+                alt="Ratskeller mit gedeckten Tischen für Feiern"
+                className="w-full aspect-video object-cover"
+              />
               <div className="p-6">
                 <h3 className="text-xl font-bold text-neutral-900 mb-2">
                   Ratskeller
@@ -183,9 +189,11 @@ export default function Home() {
             </div>
 
             <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
-              <div className="aspect-video bg-amber-100 flex items-center justify-center text-amber-700 font-medium">
-                Bild Hoftheke
-              </div>
+              <img
+                src="/images/Hoftheke/Hoftheke_55A8729-Panorama.jpg"
+                alt="Panoramaaufnahme der Hoftheke mit angrenzendem Innenhof"
+                className="w-full aspect-video object-cover"
+              />
               <div className="p-6">
                 <h3 className="text-xl font-bold text-neutral-900 mb-2">
                   Hoftheke
@@ -202,9 +210,11 @@ export default function Home() {
             </div>
 
             <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
-              <div className="aspect-video bg-amber-100 flex items-center justify-center text-amber-700 font-medium">
-                Bild Bürgermeisterzimmer
-              </div>
+              <img
+                src="/images/Bürgermeisterzimmer/Bürgermeisterzimmer_20160615-IMG_0361.JPG"
+                alt="Historisches Bürgermeisterzimmer mit Holzvertäfelung und klassischem Mobiliar"
+                className="w-full aspect-video object-cover"
+              />
               <div className="p-6">
                 <h3 className="text-xl font-bold text-neutral-900 mb-2">
                   Bürgermeisterzimmer
@@ -407,10 +417,12 @@ export default function Home() {
                 PDF mit Beispielpauschalen anfordern
               </Button>
             </div>
-            <div className="bg-white p-8 rounded-lg shadow-sm">
-              <div className="aspect-square bg-amber-100 rounded flex items-center justify-center text-amber-700 font-medium">
-                Bild Gastronomie Setup
-              </div>
+            <div className="bg-white p-8 rounded-lg shadow-sm overflow-hidden">
+              <img
+                src="/images/F&B/F&B_buffet.jpg"
+                alt="Übersichtliches Buffetsetup für Feiern und Firmenveranstaltungen"
+                className="w-full aspect-square object-cover rounded"
+              />
             </div>
           </div>
         </div>
@@ -479,10 +491,12 @@ export default function Home() {
       <section className="py-16 lg:py-24 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="bg-white p-8 rounded-lg shadow-sm">
-              <div className="aspect-square bg-amber-100 rounded flex items-center justify-center text-amber-700 font-medium">
-                Bild Lage Berlin Friedrichshagen
-              </div>
+            <div className="bg-white p-8 rounded-lg shadow-sm overflow-hidden">
+              <img
+                src="/images/Allgemein/General_20160615-IMG_0117.JPG"
+                alt="Allgemeine Innenaufnahme des historischen Rathauses mit Blick auf Architektur und Raumwirkung"
+                className="w-full aspect-square object-cover rounded"
+              />
             </div>
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
