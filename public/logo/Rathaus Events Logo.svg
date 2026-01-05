@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <style>
+      .ring { fill: #ffffff; stroke: #F2A21A; stroke-width: 18; }
+      .blk { fill: #111111; }
+      .ray { stroke: #111111; stroke-width: 10; stroke-linecap: round; }
+      .star { fill: #F2A21A; }
+      .cut { fill: #ffffff; }
+    </style>
+  </defs>
+
+  <!-- Outer ring -->
+  <circle class="ring" cx="512" cy="512" r="360"/>
+
+  <!-- Rays (minimal) -->
+  <line class="ray" x1="512" y1="420" x2="300" y2="305"/>
+  <line class="ray" x1="512" y1="420" x2="724" y2="305"/>
+  <line class="ray" x1="512" y1="445" x2="260" y2="430"/>
+  <line class="ray" x1="512" y1="445" x2="764" y2="430"/>
+
+  <!-- Stars (orange/gold) -->
+  <polygon class="star" points="360,360 372,372 360,384 348,372"/>
+  <polygon class="star" points="405,330 414,339 405,348 396,339"/>
+  <polygon class="star" points="650,345 662,357 650,369 638,357"/>
+  <polygon class="star" points="610,310 618,318 610,326 602,318"/>
+  <polygon class="star" points="720,440 728,448 720,456 712,448"/>
+  <polygon class="star" points="305,455 313,463 305,471 297,463"/>
+  <polygon class="star" points="590,375 598,383 590,391 582,383"/>
+  <polygon class="star" points="440,395 448,403 440,411 432,403"/>
+
+  <!-- Ground arc (white over black base) -->
+  <path class="cut" d="M 250 690 C 360 640, 664 640, 774 690 L 774 706 C 664 656, 360 656, 250 706 Z"/>
+
+  <!-- Rathaus silhouette (simplified) -->
+  <path class="blk" d="
+    M 285 706
+    L 285 640
+    L 330 640
+    L 330 560
+    L 360 560
+    L 360 520
+    L 392 520
+    L 392 482
+    L 420 482
+    L 420 445
+    L 455 445
+    L 455 410
+    L 480 410
+    L 480 350
+    L 500 350
+    L 500 318
+    L 512 290
+    L 524 318
+    L 524 350
+    L 544 350
+    L 544 410
+    L 575 410
+    L 575 452
+    L 660 452
+    L 660 520
+    L 740 520
+    L 740 706
+    Z"/>
+
+  <!-- Roof gable highlight (white) -->
+  <path class="cut" d="M 575 452 L 610 410 L 660 452 Z"/>
+
+  <!-- Door cutout -->
+  <path class="cut" d="
+    M 445 706
+    L 445 642
+    C 445 620, 455 605, 475 605
+    L 505 605
+    C 525 605, 535 620, 535 642
+    L 535 706
+    Z"/>
+
+  <!-- Windows cutouts -->
+  <rect class="cut" x="410" y="585" width="24" height="30" rx="3"/>
+  <rect class="cut" x="450" y="585" width="24" height="30" rx="3"/>
+  <rect class="cut" x="610" y="560" width="22" height="26" rx="3"/>
+  <rect class="cut" x="642" y="560" width="22" height="26" rx="3"/>
+  <rect class="cut" x="674" y="560" width="22" height="26" rx="3"/>
+
+  <!-- Tower spire -->
+  <path class="blk" d="M 506 290 L 512 250 L 518 290 Z"/>
+  <circle class="blk" cx="512" cy="244" r="6"/>
+</svg>
