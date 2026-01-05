@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: 'Rathaus Events - Eventlocation in Berlin',
   description: 'Historische Eventlocation in Berlin-Friedrichshagen für Hochzeiten, Firmenfeiern, Kultur und mehr. 10 bis 200 Personen.',
   icons: {
-    icon: 'https://xoscsdexeklgnxvlwdvh.supabase.co/storage/v1/object/public/logo/Rathaus%20Events%20Logo.svg',
+    icon: '/logo/Rathaus Events Logo.svg',
   },
   openGraph: {
     images: [

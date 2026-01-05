@@ -14,17 +14,6 @@ import {
 import { Checkbox } from '@/components/ui/checkbox';
 import { Mail, MapPin, Train } from 'lucide-react';
 import { useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
-
-/*
- * Supabase Client Setup
- * Konfiguration für Datenbankzugriff und Edge Functions
- * Die E-Mail-Adresse für Admin-Benachrichtigungen ist in der Edge Function konfiguriert:
- * kontakt@polymedia.agency
- */
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export default function KontaktPage() {
   const [formData, setFormData] = useState({
@@ -52,58 +41,39 @@ export default function KontaktPage() {
     setIsSubmitting(true);
 
     try {
-      // 1. Daten in Supabase speichern
-      const { data, error } = await supabase
-        .from('kontaktanfragen')
-        .insert([
-          {
-            anlass: formData.anlass,
-            veranstaltungsart: formData.veranstaltungsart,
-            wunschtermin: formData.wunschtermin || null,
-            alternativtermin: formData.alternativtermin || null,
-            uhrzeit: formData.uhrzeit,
-            personenzahl: formData.personenzahl,
-            raumwunsch: formData.raumwunsch,
-            gastronomie: formData.gastronomie,
-            getraenke: formData.getraenke,
-            technik: formData.technik,
-            budget: formData.budget || null,
-            freitext: formData.freitext || null,
-            name: formData.name,
-            firma: formData.firma || null,
-            email: formData.email,
-            telefon: formData.telefon || null,
-          },
-        ])
-        .select()
-        .single();
+      const emailBody = `
+Neue Kontaktanfrage vom Rathaus Friedrichshagen
 
-      if (error) throw error;
+Kontaktdaten:
+Name: ${formData.name}
+${formData.firma ? `Firma: ${formData.firma}` : ''}
+E-Mail: ${formData.email}
+${formData.telefon ? `Telefon: ${formData.telefon}` : ''}
 
-      // 2. E-Mail via Edge Function versenden
-      const emailResponse = await fetch(
-        `${supabaseUrl}/functions/v1/send-contact-email`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${supabaseAnonKey}`,
-          },
-          body: JSON.stringify({
-            ...formData,
-            id: data.id,
-          }),
-        }
-      );
+Veranstaltungsdetails:
+Anlass: ${formData.anlass}
+Veranstaltungsart: ${formData.veranstaltungsart}
+${formData.wunschtermin ? `Wunschtermin: ${formData.wunschtermin}` : ''}
+${formData.alternativtermin ? `Alternativtermin: ${formData.alternativtermin}` : ''}
+Uhrzeit: ${formData.uhrzeit}
+Personenzahl: ${formData.personenzahl}
+Raumwunsch: ${formData.raumwunsch}
 
-      if (!emailResponse.ok) {
-        console.error('E-Mail-Versand fehlgeschlagen, aber Anfrage wurde gespeichert');
-      }
+Gastronomie: ${formData.gastronomie.join(', ') || 'Keine Angabe'}
+Getränke: ${formData.getraenke.join(', ') || 'Keine Angabe'}
+Technik: ${formData.technik.join(', ') || 'Keine Angabe'}
 
-      // Erfolg
-      alert('Vielen Dank für deine Anfrage! Wir melden uns in Kürze bei dir.');
+${formData.budget ? `Budget: ${formData.budget}` : ''}
 
-      // Formular zurücksetzen
+${formData.freitext ? `Weitere Wünsche:\n${formData.freitext}` : ''}
+      `.trim();
+
+      const mailtoLink = `mailto:kontakt@polymedia.agency?subject=Anfrage vom Rathaus Friedrichshagen - ${formData.anlass}&body=${encodeURIComponent(emailBody)}`;
+
+      window.location.href = mailtoLink;
+
+      alert('Vielen Dank! Dein E-Mail-Programm wird geöffnet. Bitte sende die vorausgefüllte E-Mail ab.');
+
       setFormData({
         anlass: '',
         veranstaltungsart: '',
@@ -123,8 +93,8 @@ export default function KontaktPage() {
         telefon: '',
       });
     } catch (error) {
-      console.error('Fehler beim Absenden:', error);
-      alert('Es gab einen Fehler beim Absenden. Bitte versuche es erneut oder kontaktiere uns direkt per E-Mail.');
+      console.error('Fehler beim Öffnen des E-Mail-Clients:', error);
+      alert('Bitte kontaktiere uns direkt per E-Mail an kontakt@polymedia.agency');
     } finally {
       setIsSubmitting(false);
     }

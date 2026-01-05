@@ -23,7 +23,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center space-x-2">
             <Image
-              src="https://xoscsdexeklgnxvlwdvh.supabase.co/storage/v1/object/public/logo/Rathaus%20Events%20Logo.svg"
+              src="/logo/Rathaus Events Logo.svg"
               alt="Rathaus Events Logo"
               width={32}
               height={32}

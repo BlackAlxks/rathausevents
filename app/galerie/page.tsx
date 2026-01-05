@@ -18,101 +18,128 @@ const galleryItems = [
   {
     id: 1,
     category: 'raeume',
-    title: 'Alter Ratssaal',
-    description:
-      'Historischer Saal mit Stuck, Wandgemälde und großer Fensterfront',
+    title: 'Außenansicht Rathaus',
+    description: 'Historisches Gebäude von außen',
+    image: '/images/Außenansicht/Outside_rathaus_outside_view.jpg',
   },
   {
     id: 2,
     category: 'raeume',
-    title: 'Bürgermeisterzimmer',
-    description:
-      'Holzvertäfelte Salons für kleinere Runden und exklusive Empfänge',
+    title: 'Ratskeller Hauptraum',
+    description: 'Rustikaler Kellerraum mit Gewölbe und gemütlicher Atmosphäre',
+    image: '/images/Ratskeller/Ratskeller__55A1262.jpg',
   },
   {
     id: 3,
     category: 'raeume',
-    title: 'Ratskeller',
-    description: 'Rustikaler Kellerraum mit Gewölbe, Bar und gemütlicher Atmosphäre',
+    title: 'Ratskeller Gewölbe',
+    description: 'Historische Kellerräume mit authentischem Charme',
+    image: '/images/Ratskeller/Ratskeller__55A1776.jpg',
   },
   {
     id: 4,
     category: 'raeume',
-    title: 'Hoftheke & Hof',
-    description:
-      'Erdgeschoss-Raum mit großem Innenhof für Feiern drinnen und draußen',
+    title: 'Ratskeller Feier',
+    description: 'Festlich gedeckte Tische im Ratskeller',
+    image: '/images/Ratskeller/Ratskeller__55A1842.jpg',
   },
   {
     id: 5,
-    category: 'hochzeiten',
-    title: 'Hochzeit im Ratssaal',
-    description: 'Festlich gedeckte Tafel für eine unvergessliche Feier',
+    category: 'raeume',
+    title: 'Ratskeller Bar',
+    description: 'Bar und Tresen im Ratskeller',
+    image: '/images/Ratskeller/Ratskeller__55A1859.jpg',
   },
   {
     id: 6,
-    category: 'hochzeiten',
-    title: 'Trauung im historischen Ambiente',
-    description: 'Der perfekte Rahmen für den schönsten Tag',
+    category: 'ratskeller',
+    title: 'Ratskeller Gäste',
+    description: 'Gesellige Runde im rustikalen Gewölbe',
+    image: '/images/Ratskeller/Ratskeller_gaeste.jpg',
   },
   {
     id: 7,
-    category: 'hochzeiten',
-    title: 'Privater Empfang',
-    description: 'Geburtstage und Jubiläen in besonderem Ambiente',
+    category: 'ratskeller',
+    title: 'Ratskeller Event',
+    description: 'Veranstaltung im Ratskeller',
+    image: '/images/Ratskeller/Ratskeller_gaeste3.jpg',
   },
   {
     id: 8,
-    category: 'firmenfeiern',
-    title: 'Tagung im Ratssaal',
-    description: 'Professionelles Setup für Konferenzen und Workshops',
+    category: 'raeume',
+    title: 'Hoftheke Panorama',
+    description: 'Weiträumiger Blick auf die Hoftheke',
+    image: '/images/Hoftheke/Hoftheke_555A7081.jpg',
   },
   {
     id: 9,
-    category: 'firmenfeiern',
-    title: 'Firmenfeier',
-    description: 'Jahresabschluss oder Teambuilding in historischem Rahmen',
+    category: 'raeume',
+    title: 'Hoftheke Innenraum',
+    description: 'Erdgeschoss-Raum mit großem Innenhof',
+    image: '/images/Hoftheke/Hoftheke_55A9612.jpg',
   },
   {
     id: 10,
-    category: 'firmenfeiern',
-    title: 'Business Dinner',
-    description: 'Repräsentative Abendveranstaltung für Geschäftskunden',
-  },
-  {
-    id: 11,
-    category: 'kultur',
-    title: 'Konzert im Ratssaal',
-    description: 'Bühne und Bestuhlung für Musikveranstaltungen',
-  },
-  {
-    id: 12,
-    category: 'kultur',
-    title: 'Lesung',
-    description: 'Literatur und Kultur in intimer Atmosphäre',
-  },
-  {
-    id: 13,
-    category: 'kultur',
-    title: 'Tanzveranstaltung',
-    description: 'Von Tango bis Swing im historischen Ballsaal',
-  },
-  {
-    id: 14,
-    category: 'ratskeller',
-    title: 'Ratskeller Event',
-    description: 'Gesellige Runde im rustikalen Gewölbe',
-  },
-  {
-    id: 15,
     category: 'ratskeller',
     title: 'Hoftheke Sommerfest',
     description: 'Offene Atmosphäre zwischen drinnen und draußen',
+    image: '/images/Hoftheke/Hoftheke_55A9885.jpg',
+  },
+  {
+    id: 11,
+    category: 'hochzeiten',
+    title: 'Hochzeit im Ratssaal',
+    description: 'Festlich gedeckte Tafel für eine unvergessliche Feier',
+    image: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-13.jpg',
+  },
+  {
+    id: 12,
+    category: 'hochzeiten',
+    title: 'Trauung im historischen Ambiente',
+    description: 'Der perfekte Rahmen für den schönsten Tag',
+    image: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-22.jpg',
+  },
+  {
+    id: 13,
+    category: 'hochzeiten',
+    title: 'Hochzeitsfeier',
+    description: 'Romantische Feier in besonderem Ambiente',
+    image: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-27.jpg',
+  },
+  {
+    id: 14,
+    category: 'firmenfeiern',
+    title: 'Weihnachtsfeier',
+    description: 'Jahresabschluss in historischem Rahmen',
+    image: '/images/Weihnachtsfeier/Weihnachtsfeier_55A2083.jpg',
+  },
+  {
+    id: 15,
+    category: 'firmenfeiern',
+    title: 'Firmenfeier',
+    description: 'Teambuilding und Feiern im besonderen Ambiente',
+    image: '/images/Weihnachtsfeier/Weihnachtsfeierweihnachtsfeier.jpg',
   },
   {
     id: 16,
-    category: 'ratskeller',
-    title: 'Ratskeller mit Buffet',
-    description: 'Feiern mit kulinarischem Angebot an der Bar',
+    category: 'kultur',
+    title: 'Party im Ratssaal',
+    description: 'Bühne und Tanzfläche für Events',
+    image: '/images/Party/Party_55A6675.jpg',
+  },
+  {
+    id: 17,
+    category: 'kultur',
+    title: 'Konzert und Veranstaltung',
+    description: 'Kultur und Musik in historischer Atmosphäre',
+    image: '/images/Party/Party_55A6677.jpg',
+  },
+  {
+    id: 18,
+    category: 'kultur',
+    title: 'Event im Saal',
+    description: 'Von Tango bis Swing im historischen Ballsaal',
+    image: '/images/Party/Party_55A7097.jpg',
   },
 ];
 
@@ -168,8 +195,12 @@ export default function GaleriePage() {
                 key={item.id}
                 className="bg-neutral-50 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
               >
-                <div className="aspect-[4/3] bg-amber-100 flex items-center justify-center text-amber-700 font-medium transition-all duration-300 hover:bg-amber-200">
-                  Bild {item.title}
+                <div className="aspect-[4/3] relative overflow-hidden bg-neutral-200">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
                 </div>
                 <div className="p-6">
                   <h3 className="font-bold text-neutral-900 mb-2">
