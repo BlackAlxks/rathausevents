@@ -532,22 +532,6 @@ export default function Home() {
       <section className="py-16 lg:py-24 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="bg-white p-4 rounded-lg shadow-sm">
-                <img
-                  src="/images/map/makrolage.png"
-                  alt="Makrolage Berlin Friedrichshagen"
-                  className="w-full h-auto object-contain rounded"
-                />
-              </div>
-              <div className="bg-white p-4 rounded-lg shadow-sm">
-                <img
-                  src="/images/map/mikrolage.png"
-                  alt="Mikrolage Rathaus Friedrichshagen"
-                  className="w-full h-auto object-contain rounded"
-                />
-              </div>
-            </div>
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
                 Gut erreichbar in Berlin-Friedrichshagen
@@ -569,6 +553,13 @@ export default function Home() {
                 Verfügung. Alle Ebenen sind über einen Aufzug erreichbar,
                 außerdem steht ein barrierefreies WC zur Verfügung.
               </p>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300">
+              <img
+                src="/images/map/makrolage.png"
+                alt="Makrolage Berlin Friedrichshagen"
+                className="w-full h-auto object-contain rounded"
+              />
             </div>
           </div>
         </div>
