@@ -67,7 +67,7 @@ export default function Home() {
         isOpen={lightboxOpen}
         onClose={() => setLightboxOpen(false)}
       />
-      <section className="relative bg-gradient-to-br from-neutral-50 to-amber-50 py-20 lg:py-28 overflow-hidden min-h-[600px]">
+      <section className="relative bg-gradient-to-br from-neutral-50 to-amber-50 py-20 lg:py-32 overflow-hidden min-h-[700px] lg:min-h-[800px]">
         <HeroFloatingTiles />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-2xl lg:max-w-3xl">
