@@ -1,5 +1,10 @@
+'use client';
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { Lightbox } from '@/components/lightbox';
+import { FoodBeverageSlideshow } from '@/components/food-beverage-slideshow';
+import { useState } from 'react';
 import {
   Building2,
   Users,
@@ -15,42 +20,123 @@ import {
   MessageSquare,
   Settings,
   PartyPopper,
+  Phone,
+  Mail,
 } from 'lucide-react';
 
+const roomGalleries = {
+  ratssaal: [
+    { src: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-13.jpg', alt: 'Festlich gedeckte Tafel im Alten Ratssaal' },
+    { src: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-22.jpg', alt: 'Trauung im Alten Ratssaal' },
+    { src: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-27.jpg', alt: 'Hochzeitsfeier im Alten Ratssaal' },
+    { src: '/images/Party/Party_55A6675.jpg', alt: 'Party im Ratssaal' },
+    { src: '/images/Party/Party_55A7097.jpg', alt: 'Event im Saal' },
+  ],
+  ratskeller: [
+    { src: '/images/Ratskeller/Ratskeller__55A1776.jpg', alt: 'Ratskeller Gewölbe' },
+    { src: '/images/Ratskeller/Ratskeller__55A1262.jpg', alt: 'Ratskeller Hauptraum' },
+    { src: '/images/Ratskeller/Ratskeller__55A1842.jpg', alt: 'Ratskeller Feier' },
+    { src: '/images/Ratskeller/Ratskeller__55A1859.jpg', alt: 'Ratskeller Bar' },
+    { src: '/images/Ratskeller/Ratskeller_gaeste.jpg', alt: 'Ratskeller Gäste' },
+    { src: '/images/Ratskeller/Ratskeller_gaeste3.jpg', alt: 'Ratskeller Event' },
+  ],
+  hoftheke: [
+    { src: '/images/Hoftheke/Hoftheke_55A8729-Panorama.jpg', alt: 'Hoftheke Panorama' },
+    { src: '/images/Hoftheke/Hoftheke_555A7081.jpg', alt: 'Hoftheke' },
+    { src: '/images/Hoftheke/Hoftheke_55A9612.jpg', alt: 'Hoftheke Innenraum' },
+    { src: '/images/Hoftheke/Hoftheke_55A9885.jpg', alt: 'Hoftheke Sommerfest' },
+  ],
+  buergermeisterzimmer: [
+    { src: '/images/Bürgermeisterzimmer/Bürgermeisterzimmer_20160615-IMG_0361.JPG', alt: 'Historisches Bürgermeisterzimmer' },
+    { src: '/images/Bürgermeisterzimmer/Bürgermeisterzimmer_IMG_0292.JPG', alt: 'Bürgermeisterzimmer Detail' },
+    { src: '/images/Bürgermeisterzimmer/Bürgermeisterzimmer_IMG_0294.JPG', alt: 'Bürgermeisterzimmer Salon' },
+  ],
+};
+
 export default function Home() {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentGallery, setCurrentGallery] = useState<keyof typeof roomGalleries>('ratssaal');
+
+  const openLightbox = (room: keyof typeof roomGalleries) => {
+    setCurrentGallery(room);
+    setLightboxOpen(true);
+  };
+
   return (
     <main>
-      <section className="relative bg-gradient-to-br from-neutral-50 to-amber-50 py-20 lg:py-28">
+      <Lightbox
+        images={roomGalleries[currentGallery]}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+      />
+      <section className="relative bg-gradient-to-br from-neutral-50 to-amber-50 py-20 lg:py-28 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="text-amber-700 font-medium mb-3">
-              Eventlocation in Berlin-Friedrichshagen für 10 bis 200 Personen
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-3xl">
+              <div className="text-amber-700 font-medium mb-3">
+                Eventlocation in Berlin-Friedrichshagen für 10 bis 200 Personen
+              </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 mb-6 leading-tight">
+                Feiern, Tagen und Kultur im historischen Rathaus Friedrichshagen
+              </h1>
+              <p className="text-lg text-neutral-600 mb-8 leading-relaxed">
+                Ob Hochzeit, Firmenfeier, Konzert oder Workshop: Im Rathaus
+                Friedrichshagen triffst du auf ein Stück Berliner Geschichte, das
+                heute als wandelbare Eventlocation genutzt wird. Historische
+                Architektur, flexible Raumkonzepte und ein erfahrenes Team im
+                Hintergrund sorgen dafür, dass aus deiner Idee ein stimmiges Event
+                wird.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-amber-700 hover:bg-amber-800 transition-all duration-200 hover:shadow-lg"
+                >
+                  <Link href="/kontakt">
+                    Jetzt Event anfragen
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="transition-all duration-200 hover:border-amber-700 hover:text-amber-700">
+                  <Link href="#raeume">Räume entdecken</Link>
+                </Button>
+              </div>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 mb-6 leading-tight">
-              Feiern, Tagen und Kultur im historischen Rathaus Friedrichshagen
-            </h1>
-            <p className="text-lg text-neutral-600 mb-8 leading-relaxed">
-              Ob Hochzeit, Firmenfeier, Konzert oder Workshop: Im Rathaus
-              Friedrichshagen triffst du auf ein Stück Berliner Geschichte, das
-              heute als wandelbare Eventlocation genutzt wird. Historische
-              Architektur, flexible Raumkonzepte und ein erfahrenes Team im
-              Hintergrund sorgen dafür, dass aus deiner Idee ein stimmiges Event
-              wird.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                asChild
-                size="lg"
-                className="bg-amber-700 hover:bg-amber-800 transition-all duration-200 hover:shadow-lg"
-              >
-                <Link href="/kontakt">
-                  Jetzt Event anfragen
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="transition-all duration-200 hover:border-amber-700 hover:text-amber-700">
-                <Link href="#raeume">Räume entdecken</Link>
-              </Button>
+
+            <div className="hidden lg:grid grid-cols-2 gap-4 relative">
+              <div className="space-y-4">
+                <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <img
+                    src="/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-13.jpg"
+                    alt="Hochzeit im Rathaus"
+                    className="w-full h-48 object-cover"
+                  />
+                </div>
+                <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <img
+                    src="/images/Ratskeller/Ratskeller__55A1776.jpg"
+                    alt="Ratskeller"
+                    className="w-full h-64 object-cover"
+                  />
+                </div>
+              </div>
+              <div className="space-y-4 pt-8">
+                <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <img
+                    src="/images/Party/Party_55A6675.jpg"
+                    alt="Party im Rathaus"
+                    className="w-full h-56 object-cover"
+                  />
+                </div>
+                <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <img
+                    src="/images/Hoftheke/Hoftheke_55A9612.jpg"
+                    alt="Hoftheke"
+                    className="w-full h-48 object-cover"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -58,16 +144,14 @@ export default function Home() {
 
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
-              Was das Rathaus Friedrichshagen besonders macht
-            </h2>
-            <p className="text-lg text-neutral-600">
-              Ein Haus mit vielen Möglichkeiten, alles unter einem Dach.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8 mb-8">
-            <div>
+          <div className="grid lg:grid-cols-3 gap-8 items-start mb-8">
+            <div className="lg:col-span-1">
+              <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
+                Was das Rathaus Friedrichshagen besonders macht
+              </h2>
+              <p className="text-lg text-neutral-600 mb-6">
+                Ein Haus mit vielen Möglichkeiten, alles unter einem Dach.
+              </p>
               <p className="text-neutral-700 leading-relaxed">
                 Das historische Rathaus Friedrichshagen verbindet den Charme
                 eines denkmalgeschützten Gebäudes mit den Anforderungen moderner
@@ -76,11 +160,11 @@ export default function Home() {
                 von 10 bis 200 Personen nutzen.
               </p>
             </div>
-            <div className="bg-amber-50 p-6 rounded-lg overflow-hidden">
+            <div className="lg:col-span-2 rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
               <img
                 src="/images/Außenansicht/Outside_rathaus_outside_view.jpg"
                 alt="Außenansicht des historischen Rathauses Friedrichshagen mit Fassade und Eingangsbereich"
-                className="w-full h-full object-cover rounded"
+                className="w-full h-full object-cover"
               />
             </div>
           </div>
@@ -144,7 +228,10 @@ export default function Home() {
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+            <div
+              onClick={() => openLightbox('ratssaal')}
+              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+            >
               <img
                 src="/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-13.jpg"
                 alt="Festlich gedeckte Tafel im Alten Ratssaal für eine unvergessliche Feier"
@@ -166,7 +253,10 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+            <div
+              onClick={() => openLightbox('ratskeller')}
+              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+            >
               <img
                 src="/images/Ratskeller/Ratskeller__55A1776.jpg"
                 alt="Ratskeller mit gedeckten Tischen für Feiern"
@@ -188,7 +278,10 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+            <div
+              onClick={() => openLightbox('hoftheke')}
+              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+            >
               <img
                 src="/images/Hoftheke/Hoftheke_55A8729-Panorama.jpg"
                 alt="Panoramaaufnahme der Hoftheke mit angrenzendem Innenhof"
@@ -209,7 +302,10 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+            <div
+              onClick={() => openLightbox('buergermeisterzimmer')}
+              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+            >
               <img
                 src="/images/Bürgermeisterzimmer/Bürgermeisterzimmer_20160615-IMG_0361.JPG"
                 alt="Historisches Bürgermeisterzimmer mit Holzvertäfelung und klassischem Mobiliar"
@@ -412,18 +508,18 @@ export default function Home() {
                 transparent und du weißt schon im Vorfeld, womit du rechnen
                 kannst.
               </p>
-              <Button variant="outline" className="border-amber-700 text-amber-700 hover:bg-amber-50 transition-all duration-200 hover:border-amber-800">
-                <Download className="mr-2 h-4 w-4" />
-                PDF mit Beispielpauschalen anfordern
+              <Button
+                asChild
+                variant="outline"
+                className="border-amber-700 text-amber-700 hover:bg-amber-50 transition-all duration-200 hover:border-amber-800"
+              >
+                <a href="/pdf/0-Angebote-Bankett-Brau-und-Genusswerkstatt_2026.pdf" target="_blank" rel="noopener noreferrer">
+                  <Download className="mr-2 h-4 w-4" />
+                  PDF mit Beispielpauschalen anfordern
+                </a>
               </Button>
             </div>
-            <div className="bg-white p-8 rounded-lg shadow-sm overflow-hidden">
-              <img
-                src="/images/F&B/F&B_buffet.jpg"
-                alt="Übersichtliches Buffetsetup für Feiern und Firmenveranstaltungen"
-                className="w-full aspect-square object-cover rounded"
-              />
-            </div>
+            <FoodBeverageSlideshow />
           </div>
         </div>
       </section>
@@ -485,18 +581,71 @@ export default function Home() {
               </p>
             </div>
           </div>
+
+          <div className="mt-16 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-neutral-900 mb-8 text-center">
+              Deine Ansprechpartner
+            </h3>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-neutral-50 p-6 rounded-lg">
+                <h4 className="font-bold text-neutral-900 mb-2">Samantha Krebs</h4>
+                <p className="text-sm text-neutral-600 mb-4">Firmen / Privatfeier & Drehort</p>
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-center gap-2 text-neutral-700">
+                    <Phone className="h-4 w-4 text-amber-700" />
+                    <a href="tel:01624533204" className="hover:text-amber-700 transition-colors">
+                      0162 4533204
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-2 text-neutral-700">
+                    <Mail className="h-4 w-4 text-amber-700" />
+                    <a href="mailto:convention@brauerei-friedrichshagen.de" className="hover:text-amber-700 transition-colors">
+                      convention@brauerei-friedrichshagen.de
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-neutral-50 p-6 rounded-lg">
+                <h4 className="font-bold text-neutral-900 mb-2">René Baruth</h4>
+                <p className="text-sm text-neutral-600 mb-4">Firmen / Privatfeier</p>
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-center gap-2 text-neutral-700">
+                    <Phone className="h-4 w-4 text-amber-700" />
+                    <a href="tel:01624533204" className="hover:text-amber-700 transition-colors">
+                      0162 4533204
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-2 text-neutral-700">
+                    <Mail className="h-4 w-4 text-amber-700" />
+                    <a href="mailto:bankett@rathaus-events.de" className="hover:text-amber-700 transition-colors">
+                      bankett@rathaus-events.de
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <section className="py-16 lg:py-24 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="bg-white p-8 rounded-lg shadow-sm overflow-hidden">
-              <img
-                src="/images/Allgemein/General_20160615-IMG_0117.JPG"
-                alt="Allgemeine Innenaufnahme des historischen Rathauses mit Blick auf Architektur und Raumwirkung"
-                className="w-full aspect-square object-cover rounded"
-              />
+            <div className="space-y-6">
+              <div className="bg-white p-4 rounded-lg shadow-sm">
+                <img
+                  src="/images/map/makrolage.png"
+                  alt="Makrolage Berlin Friedrichshagen"
+                  className="w-full h-auto object-contain rounded"
+                />
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow-sm">
+                <img
+                  src="/images/map/mikrolage.png"
+                  alt="Mikrolage Rathaus Friedrichshagen"
+                  className="w-full h-auto object-contain rounded"
+                />
+              </div>
             </div>
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
@@ -535,16 +684,40 @@ export default function Home() {
             Rückfragen oder einem ersten Vorschlag und begleiten dich von dort
             an durch die weitere Planung.
           </p>
-          <Button
-            asChild
-            size="lg"
-            className="bg-white text-amber-700 hover:bg-amber-50 transition-all duration-200 hover:shadow-lg"
-          >
-            <Link href="/kontakt">
-              Jetzt unverbindlich anfragen
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              asChild
+              size="lg"
+              className="bg-white text-amber-700 hover:bg-amber-50 transition-all duration-200 hover:shadow-lg"
+            >
+              <Link href="/kontakt">
+                Kontaktformular
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="bg-transparent text-white border-white hover:bg-white/10 transition-all duration-200"
+            >
+              <a href="tel:01624533204">
+                <Phone className="mr-2 h-4 w-4" />
+                Samantha Krebs anrufen
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="bg-transparent text-white border-white hover:bg-white/10 transition-all duration-200"
+            >
+              <a href="mailto:convention@brauerei-friedrichshagen.de">
+                <Mail className="mr-2 h-4 w-4" />
+                E-Mail schreiben
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
     </main>

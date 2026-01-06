@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Building2, Mail, MapPin, Train } from 'lucide-react';
+import { Building2, Mail, MapPin, Train, Phone } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -28,6 +28,15 @@ export default function Footer() {
                   <div>Bölschestr. 87/88</div>
                   <div>12587 Berlin</div>
                 </div>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Phone className="h-4 w-4 flex-shrink-0 text-amber-600" />
+                <a
+                  href="tel:01624533204"
+                  className="hover:text-white transition-colors"
+                >
+                  0162 4533204
+                </a>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 flex-shrink-0 text-amber-600" />
