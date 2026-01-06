@@ -64,6 +64,7 @@ export function HeroFloatingTiles() {
           key={index}
           className={`absolute ${tile.position} ${sizeClasses[tile.size]} transition-all duration-300 hover:scale-105 hover:shadow-2xl`}
           style={{ opacity }}
+          suppressHydrationWarning
         >
           <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg">
             <img

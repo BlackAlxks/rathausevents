@@ -88,6 +88,7 @@ export function EventProcessSection() {
                   transform: `translateY(${(1 - itemProgress) * 30}px)`,
                   transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
                 }}
+                suppressHydrationWarning
               >
                 <div className="flex flex-col items-center text-center relative">
                   <div className="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mb-4 relative z-10">
