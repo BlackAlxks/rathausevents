@@ -476,89 +476,53 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-16 max-w-5xl mx-auto">
+          <div className="mt-16 max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold text-neutral-900 mb-2 text-center">
               Ansprechpartner
             </h3>
             <p className="text-neutral-600 text-center mb-8">
-              Für dein Event stehen dir erfahrene Koordinatoren zur Seite
+              Deine persönlichen Ansprechpartner für Events im Rathaus Friedrichshagen
             </p>
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-neutral-50 p-6 rounded-lg">
-                <h4 className="font-bold text-neutral-900 mb-2">Firmen und Privatfeiern</h4>
-                <p className="text-sm text-neutral-700 mb-4">
-                  Planung und Betreuung von Firmenevents, Geburtstagen und privaten Feiern
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-white border border-neutral-200 p-8 rounded-lg">
+                <h4 className="text-xl font-bold text-neutral-900 mb-3">Samantha Krebs</h4>
+                <p className="text-sm text-neutral-600 mb-6">
+                  Firmen und Privatfeiern, Hochzeiten, Trauungen, Dreharbeiten
                 </p>
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-center gap-2 text-neutral-700">
-                    <Phone className="h-4 w-4 text-amber-700" />
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 text-neutral-700">
+                    <Phone className="h-5 w-5 text-amber-700 flex-shrink-0" />
                     <a href="tel:01624533204" className="hover:text-amber-700 transition-colors">
                       0162 4533204
                     </a>
                   </div>
-                  <div className="flex items-center gap-2 text-neutral-700">
-                    <Mail className="h-4 w-4 text-amber-700" />
-                    <a href="mailto:bankett@rathaus-events.de" className="hover:text-amber-700 transition-colors text-xs">
+                  <div className="flex items-center gap-3 text-neutral-700">
+                    <Mail className="h-5 w-5 text-amber-700 flex-shrink-0" />
+                    <a href="mailto:convention@brauerei-friedrichshagen.de" className="hover:text-amber-700 transition-colors break-all text-sm">
+                      convention@brauerei-friedrichshagen.de
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white border border-neutral-200 p-8 rounded-lg">
+                <h4 className="text-xl font-bold text-neutral-900 mb-3">René Baruth</h4>
+                <p className="text-sm text-neutral-600 mb-6">
+                  Firmen und Privatfeiern, Bankette, Veranstaltungen
+                </p>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 text-neutral-700">
+                    <Phone className="h-5 w-5 text-amber-700 flex-shrink-0" />
+                    <a href="tel:01624533204" className="hover:text-amber-700 transition-colors">
+                      0162 4533204
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-3 text-neutral-700">
+                    <Mail className="h-5 w-5 text-amber-700 flex-shrink-0" />
+                    <a href="mailto:bankett@rathaus-events.de" className="hover:text-amber-700 transition-colors break-all text-sm">
                       bankett@rathaus-events.de
                     </a>
                   </div>
                 </div>
-              </div>
-              <div className="bg-neutral-50 p-6 rounded-lg">
-                <h4 className="font-bold text-neutral-900 mb-2">Hochzeiten und Trauungen</h4>
-                <p className="text-sm text-neutral-700 mb-4">
-                  Spezialisiert auf den schönsten Tag deines Lebens
-                </p>
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-center gap-2 text-neutral-700">
-                    <Phone className="h-4 w-4 text-amber-700" />
-                    <a href="tel:01624533204" className="hover:text-amber-700 transition-colors">
-                      0162 4533204
-                    </a>
-                  </div>
-                  <div className="flex items-center gap-2 text-neutral-700">
-                    <Mail className="h-4 w-4 text-amber-700" />
-                    <a href="mailto:convention@brauerei-friedrichshagen.de" className="hover:text-amber-700 transition-colors text-xs">
-                      convention@brauerei-friedrichshagen.de
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-neutral-50 p-6 rounded-lg">
-                <h4 className="font-bold text-neutral-900 mb-2">Dreharbeiten und Film</h4>
-                <p className="text-sm text-neutral-700 mb-4">
-                  Location-Service für Film- und Fotoproduktionen
-                </p>
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-center gap-2 text-neutral-700">
-                    <Phone className="h-4 w-4 text-amber-700" />
-                    <a href="tel:01624533204" className="hover:text-amber-700 transition-colors">
-                      0162 4533204
-                    </a>
-                  </div>
-                  <div className="flex items-center gap-2 text-neutral-700">
-                    <Mail className="h-4 w-4 text-amber-700" />
-                    <a href="mailto:convention@brauerei-friedrichshagen.de" className="hover:text-amber-700 transition-colors text-xs">
-                      convention@brauerei-friedrichshagen.de
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="bg-amber-50 p-6 rounded-lg text-center">
-              <h4 className="font-bold text-neutral-900 mb-2">Persönlicher Kontakt</h4>
-              <p className="text-sm text-neutral-700 mb-4">
-                Samantha Krebs und René Baruth stehen dir persönlich für alle Fragen zur Verfügung
-              </p>
-              <div className="flex flex-wrap justify-center gap-4 text-sm">
-                <a href="tel:01624533204" className="flex items-center gap-2 text-neutral-700 hover:text-amber-700 transition-colors">
-                  <Phone className="h-4 w-4" />
-                  0162 4533204
-                </a>
-                <a href="mailto:convention@brauerei-friedrichshagen.de" className="flex items-center gap-2 text-neutral-700 hover:text-amber-700 transition-colors">
-                  <Mail className="h-4 w-4" />
-                  E-Mail senden
-                </a>
               </div>
             </div>
           </div>
