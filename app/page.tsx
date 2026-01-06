@@ -6,7 +6,7 @@ import { Lightbox } from '@/components/lightbox';
 import { FoodBeverageSlideshow } from '@/components/food-beverage-slideshow';
 import { HeroFloatingTiles } from '@/components/hero-floating-tiles';
 import { EventProcessSection } from '@/components/event-process-section';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Building2,
   Users,
@@ -54,22 +54,57 @@ const roomGalleries = {
 export default function Home() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentGallery, setCurrentGallery] = useState<keyof typeof roomGalleries>('ratssaal');
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const maxScroll = 500;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      const progress = Math.min(scrolled / maxScroll, 1);
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const openLightbox = (room: keyof typeof roomGalleries) => {
     setCurrentGallery(room);
     setLightboxOpen(true);
   };
 
+  const heroIsFixed = scrollProgress < 1;
+
   return (
-    <main>
+    <main className="relative">
       <Lightbox
         images={roomGalleries[currentGallery]}
         isOpen={lightboxOpen}
         onClose={() => setLightboxOpen(false)}
       />
-      <section className="relative bg-gradient-to-br from-neutral-50 to-amber-50 py-20 lg:py-32 overflow-hidden min-h-[700px] lg:min-h-[800px]">
+      <div style={{ height: `${maxScroll}px` }} />
+      <section
+        className="bg-gradient-to-br from-neutral-50 to-amber-50 overflow-hidden"
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          width: '100%',
+          height: '100vh',
+          zIndex: 10,
+          opacity: heroIsFixed ? 1 : 0,
+          pointerEvents: heroIsFixed ? 'auto' : 'none',
+          transition: 'opacity 0.3s ease-out',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
         <HeroFloatingTiles />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-8">
           <div className="max-w-2xl lg:max-w-3xl">
             <div className="text-amber-700 font-medium mb-3">
               Eventlocation in Berlin-Friedrichshagen für 10 bis 200 Personen
@@ -121,6 +156,7 @@ export default function Home() {
         </div>
       </section>
 
+      <div>
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-start mb-8">
@@ -612,6 +648,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </div>
     </main>
   );
 }
