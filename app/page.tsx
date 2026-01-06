@@ -409,7 +409,7 @@ export default function Home() {
               >
                 <a href="/pdf/0-Angebote-Bankett-Brau-und-Genusswerkstatt_2026.pdf" target="_blank" rel="noopener noreferrer">
                   <Download className="mr-2 h-4 w-4" />
-                  PDF mit Beispielpauschalen anfordern
+                  PDF mit Beispielpauschalen herunterladen
                 </a>
               </Button>
             </div>
