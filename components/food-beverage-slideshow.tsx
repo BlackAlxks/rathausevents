@@ -19,7 +19,7 @@ export function FoodBeverageSlideshow() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev === fbImages.length - 1 ? 0 : prev + 1));
-    }, 5000);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 

@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Lightbox } from '@/components/lightbox';
 import { FoodBeverageSlideshow } from '@/components/food-beverage-slideshow';
+import { HeroFloatingTiles } from '@/components/hero-floating-tiles';
+import { EventProcessSection } from '@/components/event-process-section';
 import { useState } from 'react';
 import {
   Building2,
@@ -69,74 +71,55 @@ export default function Home() {
         isOpen={lightboxOpen}
         onClose={() => setLightboxOpen(false)}
       />
-      <section className="relative bg-gradient-to-br from-neutral-50 to-amber-50 py-20 lg:py-28 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="max-w-3xl">
-              <div className="text-amber-700 font-medium mb-3">
-                Eventlocation in Berlin-Friedrichshagen für 10 bis 200 Personen
-              </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 mb-6 leading-tight">
-                Feiern, Tagen und Kultur im historischen Rathaus Friedrichshagen
-              </h1>
-              <p className="text-lg text-neutral-600 mb-8 leading-relaxed">
-                Ob Hochzeit, Firmenfeier, Konzert oder Workshop: Im Rathaus
-                Friedrichshagen triffst du auf ein Stück Berliner Geschichte, das
-                heute als wandelbare Eventlocation genutzt wird. Historische
-                Architektur, flexible Raumkonzepte und ein erfahrenes Team im
-                Hintergrund sorgen dafür, dass aus deiner Idee ein stimmiges Event
-                wird.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-amber-700 hover:bg-amber-800 transition-all duration-200 hover:shadow-lg"
-                >
-                  <Link href="/kontakt">
-                    Jetzt Event anfragen
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="transition-all duration-200 hover:border-amber-700 hover:text-amber-700">
-                  <Link href="#raeume">Räume entdecken</Link>
-                </Button>
-              </div>
+      <section className="relative bg-gradient-to-br from-neutral-50 to-amber-50 py-20 lg:py-28 overflow-hidden min-h-[600px]">
+        <HeroFloatingTiles />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-2xl lg:max-w-3xl">
+            <div className="text-amber-700 font-medium mb-3">
+              Eventlocation in Berlin-Friedrichshagen für 10 bis 200 Personen
             </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 mb-6 leading-tight">
+              Feiern, Tagen und Kultur im historischen Rathaus Friedrichshagen
+            </h1>
+            <p className="text-lg text-neutral-600 mb-8 leading-relaxed">
+              Ob Hochzeit, Firmenfeier, Konzert oder Workshop: Im Rathaus
+              Friedrichshagen triffst du auf ein Stück Berliner Geschichte, das
+              heute als wandelbare Eventlocation genutzt wird. Historische
+              Architektur, flexible Raumkonzepte und ein erfahrenes Team im
+              Hintergrund sorgen dafür, dass aus deiner Idee ein stimmiges Event
+              wird.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button
+                asChild
+                size="lg"
+                className="bg-amber-700 hover:bg-amber-800 transition-all duration-200 hover:shadow-lg"
+              >
+                <Link href="/kontakt">
+                  Jetzt Event anfragen
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="transition-all duration-200 hover:border-amber-700 hover:text-amber-700">
+                <Link href="#raeume">Räume entdecken</Link>
+              </Button>
+            </div>
+          </div>
 
-            <div className="hidden lg:grid grid-cols-2 gap-4 relative">
-              <div className="space-y-4">
-                <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                  <img
-                    src="/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-13.jpg"
-                    alt="Hochzeit im Rathaus"
-                    className="w-full h-48 object-cover"
-                  />
-                </div>
-                <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                  <img
-                    src="/images/Ratskeller/Ratskeller__55A1776.jpg"
-                    alt="Ratskeller"
-                    className="w-full h-64 object-cover"
-                  />
-                </div>
-              </div>
-              <div className="space-y-4 pt-8">
-                <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                  <img
-                    src="/images/Party/Party_55A6675.jpg"
-                    alt="Party im Rathaus"
-                    className="w-full h-56 object-cover"
-                  />
-                </div>
-                <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                  <img
-                    src="/images/Hoftheke/Hoftheke_55A9612.jpg"
-                    alt="Hoftheke"
-                    className="w-full h-48 object-cover"
-                  />
-                </div>
-              </div>
+          <div className="mt-12 lg:hidden grid grid-cols-2 gap-4">
+            <div className="bg-white rounded-lg overflow-hidden shadow-md">
+              <img
+                src="/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-13.jpg"
+                alt="Hochzeit im Rathaus"
+                className="w-full h-40 object-cover"
+              />
+            </div>
+            <div className="bg-white rounded-lg overflow-hidden shadow-md">
+              <img
+                src="/images/Party/Party_55A6675.jpg"
+                alt="Party im Rathaus"
+                className="w-full h-40 object-cover"
+              />
             </div>
           </div>
         </div>
@@ -144,8 +127,8 @@ export default function Home() {
 
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-8 items-start mb-8">
-            <div className="lg:col-span-1">
+          <div className="grid lg:grid-cols-2 gap-12 items-start mb-8">
+            <div>
               <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
                 Was das Rathaus Friedrichshagen besonders macht
               </h2>
@@ -160,7 +143,7 @@ export default function Home() {
                 von 10 bis 200 Personen nutzen.
               </p>
             </div>
-            <div className="lg:col-span-2 rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+            <div className="rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
               <img
                 src="/images/Außenansicht/Outside_rathaus_outside_view.jpg"
                 alt="Außenansicht des historischen Rathauses Friedrichshagen mit Fassade und Eingangsbereich"
@@ -233,8 +216,8 @@ export default function Home() {
               className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
             >
               <img
-                src="/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-13.jpg"
-                alt="Festlich gedeckte Tafel im Alten Ratssaal für eine unvergessliche Feier"
+                src="/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-27.jpg"
+                alt="Hochzeitsfeier im Alten Ratssaal mit Gästen"
                 className="w-full aspect-video object-cover"
               />
               <div className="p-6">
@@ -398,92 +381,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Prozess-Section: Ablauf von Anfrage bis Event */}
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
-              So wird aus deiner Anfrage ein Event im Rathaus Friedrichshagen
-            </h2>
-            <p className="text-lg text-neutral-600">
-              Klarer Ablauf von der ersten Nachricht bis zur Feier.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="relative">
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mb-4">
-                  <Send className="h-8 w-8 text-amber-700" />
-                </div>
-                <div className="w-8 h-8 rounded-full bg-amber-700 text-white flex items-center justify-center font-bold mb-4">
-                  1
-                </div>
-                <h3 className="font-bold text-neutral-900 mb-2">
-                  Anfrage senden
-                </h3>
-                <p className="text-sm text-neutral-600 leading-relaxed">
-                  Du teilst uns Anlass, Datum, Gästezahl und erste Ideen über das Formular mit.
-                </p>
-              </div>
-              <div className="hidden lg:block absolute top-12 left-full w-full h-0.5 bg-amber-200 -translate-x-1/2"></div>
-            </div>
-
-            <div className="relative">
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mb-4">
-                  <MessageSquare className="h-8 w-8 text-amber-700" />
-                </div>
-                <div className="w-8 h-8 rounded-full bg-amber-700 text-white flex items-center justify-center font-bold mb-4">
-                  2
-                </div>
-                <h3 className="font-bold text-neutral-900 mb-2">
-                  Rückmeldung und Vorschlag
-                </h3>
-                <p className="text-sm text-neutral-600 leading-relaxed">
-                  Wir prüfen Verfügbarkeit, Räume und Pauschalen und melden uns mit Rückfragen oder einem ersten Vorschlag.
-                </p>
-              </div>
-              <div className="hidden lg:block absolute top-12 left-full w-full h-0.5 bg-amber-200 -translate-x-1/2"></div>
-            </div>
-
-            <div className="relative">
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mb-4">
-                  <Settings className="h-8 w-8 text-amber-700" />
-                </div>
-                <div className="w-8 h-8 rounded-full bg-amber-700 text-white flex items-center justify-center font-bold mb-4">
-                  3
-                </div>
-                <h3 className="font-bold text-neutral-900 mb-2">
-                  Feinplanung im Austausch
-                </h3>
-                <p className="text-sm text-neutral-600 leading-relaxed">
-                  Gemeinsam passen wir Raumsetup, Gastronomie, Technik und Zeitplan an dein Event an.
-                </p>
-              </div>
-              <div className="hidden lg:block absolute top-12 left-full w-full h-0.5 bg-amber-200 -translate-x-1/2"></div>
-            </div>
-
-            <div className="relative">
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mb-4">
-                  <PartyPopper className="h-8 w-8 text-amber-700" />
-                </div>
-                <div className="w-8 h-8 rounded-full bg-amber-700 text-white flex items-center justify-center font-bold mb-4">
-                  4
-                </div>
-                <h3 className="font-bold text-neutral-900 mb-2">
-                  Event im Rathaus Friedrichshagen
-                </h3>
-                <p className="text-sm text-neutral-600 leading-relaxed">
-                  Am Veranstaltungstag steht alles bereit und unser Team begleitet dich im Hintergrund durch den Abend.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <EventProcessSection />
 
       <section className="py-16 lg:py-24 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -582,14 +480,19 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-16 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-neutral-900 mb-8 text-center">
-              Deine Ansprechpartner
+          <div className="mt-16 max-w-5xl mx-auto">
+            <h3 className="text-2xl font-bold text-neutral-900 mb-2 text-center">
+              Ansprechpartner
             </h3>
-            <div className="grid md:grid-cols-2 gap-8">
+            <p className="text-neutral-600 text-center mb-8">
+              Für dein Event stehen dir erfahrene Koordinatoren zur Seite
+            </p>
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
               <div className="bg-neutral-50 p-6 rounded-lg">
-                <h4 className="font-bold text-neutral-900 mb-2">Samantha Krebs</h4>
-                <p className="text-sm text-neutral-600 mb-4">Firmen / Privatfeier & Drehort</p>
+                <h4 className="font-bold text-neutral-900 mb-2">Firmen und Privatfeiern</h4>
+                <p className="text-sm text-neutral-700 mb-4">
+                  Planung und Betreuung von Firmenevents, Geburtstagen und privaten Feiern
+                </p>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center gap-2 text-neutral-700">
                     <Phone className="h-4 w-4 text-amber-700" />
@@ -599,15 +502,37 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-2 text-neutral-700">
                     <Mail className="h-4 w-4 text-amber-700" />
-                    <a href="mailto:convention@brauerei-friedrichshagen.de" className="hover:text-amber-700 transition-colors">
+                    <a href="mailto:bankett@rathaus-events.de" className="hover:text-amber-700 transition-colors text-xs">
+                      bankett@rathaus-events.de
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-neutral-50 p-6 rounded-lg">
+                <h4 className="font-bold text-neutral-900 mb-2">Hochzeiten und Trauungen</h4>
+                <p className="text-sm text-neutral-700 mb-4">
+                  Spezialisiert auf den schönsten Tag deines Lebens
+                </p>
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-center gap-2 text-neutral-700">
+                    <Phone className="h-4 w-4 text-amber-700" />
+                    <a href="tel:01624533204" className="hover:text-amber-700 transition-colors">
+                      0162 4533204
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-2 text-neutral-700">
+                    <Mail className="h-4 w-4 text-amber-700" />
+                    <a href="mailto:convention@brauerei-friedrichshagen.de" className="hover:text-amber-700 transition-colors text-xs">
                       convention@brauerei-friedrichshagen.de
                     </a>
                   </div>
                 </div>
               </div>
               <div className="bg-neutral-50 p-6 rounded-lg">
-                <h4 className="font-bold text-neutral-900 mb-2">René Baruth</h4>
-                <p className="text-sm text-neutral-600 mb-4">Firmen / Privatfeier</p>
+                <h4 className="font-bold text-neutral-900 mb-2">Dreharbeiten und Film</h4>
+                <p className="text-sm text-neutral-700 mb-4">
+                  Location-Service für Film- und Fotoproduktionen
+                </p>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center gap-2 text-neutral-700">
                     <Phone className="h-4 w-4 text-amber-700" />
@@ -617,11 +542,27 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-2 text-neutral-700">
                     <Mail className="h-4 w-4 text-amber-700" />
-                    <a href="mailto:bankett@rathaus-events.de" className="hover:text-amber-700 transition-colors">
-                      bankett@rathaus-events.de
+                    <a href="mailto:convention@brauerei-friedrichshagen.de" className="hover:text-amber-700 transition-colors text-xs">
+                      convention@brauerei-friedrichshagen.de
                     </a>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div className="bg-amber-50 p-6 rounded-lg text-center">
+              <h4 className="font-bold text-neutral-900 mb-2">Persönlicher Kontakt</h4>
+              <p className="text-sm text-neutral-700 mb-4">
+                Samantha Krebs und René Baruth stehen dir persönlich für alle Fragen zur Verfügung
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 text-sm">
+                <a href="tel:01624533204" className="flex items-center gap-2 text-neutral-700 hover:text-amber-700 transition-colors">
+                  <Phone className="h-4 w-4" />
+                  0162 4533204
+                </a>
+                <a href="mailto:convention@brauerei-friedrichshagen.de" className="flex items-center gap-2 text-neutral-700 hover:text-amber-700 transition-colors">
+                  <Mail className="h-4 w-4" />
+                  E-Mail senden
+                </a>
               </div>
             </div>
           </div>
@@ -688,23 +629,23 @@ export default function Home() {
             <Button
               asChild
               size="lg"
-              className="bg-white text-amber-700 hover:bg-amber-50 transition-all duration-200 hover:shadow-lg"
-            >
-              <Link href="/kontakt">
-                Kontaktformular
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
               variant="outline"
               className="bg-transparent text-white border-white hover:bg-white/10 transition-all duration-200"
             >
               <a href="tel:01624533204">
                 <Phone className="mr-2 h-4 w-4" />
-                Samantha Krebs anrufen
+                Anrufen
               </a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              className="bg-white text-amber-700 hover:bg-amber-50 transition-all duration-200 hover:shadow-lg"
+            >
+              <Link href="/kontakt">
+                Jetzt anfragen
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
             <Button
               asChild
