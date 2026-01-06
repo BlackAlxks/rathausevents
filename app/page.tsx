@@ -18,10 +18,6 @@ import {
   CheckCircle,
   Download,
   ArrowRight,
-  Send,
-  MessageSquare,
-  Settings,
-  PartyPopper,
   Phone,
   Mail,
 } from 'lucide-react';
