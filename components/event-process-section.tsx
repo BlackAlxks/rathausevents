@@ -89,8 +89,8 @@ export function EventProcessSection() {
                   transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
                 }}
               >
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mb-4">
+                <div className="flex flex-col items-center text-center relative">
+                  <div className="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mb-4 relative z-10">
                     <Icon className="h-8 w-8 text-amber-700" />
                   </div>
                   <div className="w-8 h-8 rounded-full bg-amber-700 text-white flex items-center justify-center font-bold mb-4">
@@ -100,7 +100,7 @@ export function EventProcessSection() {
                   <p className="text-sm text-neutral-600 leading-relaxed">{step.description}</p>
                 </div>
                 {!isLast && (
-                  <div className="hidden lg:block absolute top-12 left-full w-full h-0.5 bg-amber-200 -translate-x-1/2"></div>
+                  <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-amber-200 -translate-x-1/2 z-0"></div>
                 )}
               </div>
             );
