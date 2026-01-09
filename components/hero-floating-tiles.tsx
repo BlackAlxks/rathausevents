@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
+import { SmartImage } from './smart-image';
 
 interface FloatingImage {
   src: string;
@@ -165,7 +166,7 @@ export function HeroFloatingTiles() {
               suppressHydrationWarning
             >
               <div
-                className="rounded-lg overflow-hidden shadow-xl transition-shadow duration-300"
+                className="rounded-lg overflow-hidden shadow-xl transition-shadow duration-300 relative"
                 style={{
                   ...styles,
                   width: isMobile ? '200px' : '320px',
@@ -177,11 +178,13 @@ export function HeroFloatingTiles() {
                 }}
                 suppressHydrationWarning
               >
-                <img
+                <SmartImage
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-full object-cover"
-                  loading="eager"
+                  fill
+                  priority={image.showOnMobile}
+                  sizes="(max-width: 1024px) 200px, 320px"
+                  className="object-cover"
                 />
               </div>
             </div>

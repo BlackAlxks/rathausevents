@@ -1,6 +1,7 @@
 'use client';
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { SmartImage } from './smart-image';
 import { useState, useEffect } from 'react';
 
 const fbImages = [
@@ -33,16 +34,19 @@ export function FoodBeverageSlideshow() {
 
   return (
     <div className="bg-white p-8 rounded-lg shadow-sm">
-      <div className="relative group">
-        <img
+      <div className="relative group aspect-square rounded overflow-hidden">
+        <SmartImage
           src={fbImages[currentIndex].src}
           alt={fbImages[currentIndex].alt}
-          className="w-full aspect-square object-cover rounded"
+          fill
+          priority
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+          className="object-cover"
         />
 
         <button
           onClick={handlePrevious}
-          className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-neutral-900 rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+          className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-neutral-900 rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity z-10"
           aria-label="Vorheriges Bild"
         >
           <ChevronLeft className="w-6 h-6" />
@@ -50,7 +54,7 @@ export function FoodBeverageSlideshow() {
 
         <button
           onClick={handleNext}
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-neutral-900 rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-neutral-900 rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity z-10"
           aria-label="Nächstes Bild"
         >
           <ChevronRight className="w-6 h-6" />
@@ -62,16 +66,18 @@ export function FoodBeverageSlideshow() {
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`flex-shrink-0 w-16 h-16 rounded overflow-hidden border-2 transition-all ${
+            className={`flex-shrink-0 w-16 h-16 rounded overflow-hidden border-2 transition-all relative ${
               index === currentIndex
                 ? 'border-amber-700 scale-110'
                 : 'border-neutral-200 hover:border-amber-400'
             }`}
           >
-            <img
+            <SmartImage
               src={image.src}
               alt={image.alt}
-              className="w-full h-full object-cover"
+              fill
+              sizes="64px"
+              className="object-cover"
             />
           </button>
         ))}

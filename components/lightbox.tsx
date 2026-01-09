@@ -1,6 +1,7 @@
 'use client';
 
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { SmartImage } from './smart-image';
 import { useState } from 'react';
 
 interface LightboxProps {
@@ -50,27 +51,34 @@ export function Lightbox({ images, isOpen, onClose, initialIndex = 0 }: Lightbox
       </button>
 
       <div className="max-w-6xl w-full">
-        <img
-          src={images[currentIndex].src}
-          alt={images[currentIndex].alt}
-          className="w-full h-auto max-h-[80vh] object-contain"
-        />
+        <div className="relative w-full max-h-[80vh] aspect-video">
+          <SmartImage
+            src={images[currentIndex].src}
+            alt={images[currentIndex].alt}
+            fill
+            priority
+            sizes="(max-width: 1536px) 100vw, 1536px"
+            className="object-contain"
+          />
+        </div>
 
         <div className="flex gap-2 mt-4 overflow-x-auto pb-2">
           {images.map((image, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`flex-shrink-0 w-20 h-20 rounded overflow-hidden border-2 transition-all ${
+              className={`flex-shrink-0 w-20 h-20 rounded overflow-hidden border-2 transition-all relative ${
                 index === currentIndex
                   ? 'border-amber-400 scale-110'
                   : 'border-transparent hover:border-white/50'
               }`}
             >
-              <img
+              <SmartImage
                 src={image.src}
                 alt={image.alt}
-                className="w-full h-full object-cover"
+                fill
+                sizes="80px"
+                className="object-cover"
               />
             </button>
           ))}

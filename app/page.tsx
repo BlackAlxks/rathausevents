@@ -6,6 +6,7 @@ import { Lightbox } from '@/components/lightbox';
 import { FoodBeverageSlideshow } from '@/components/food-beverage-slideshow';
 import { HeroFloatingTiles } from '@/components/hero-floating-tiles';
 import { EventProcessSection } from '@/components/event-process-section';
+import { SmartImage } from '@/components/smart-image';
 import { useState, useEffect } from 'react';
 import {
   Building2,
@@ -138,18 +139,24 @@ export default function Home() {
           </div>
 
           <div className="mt-12 lg:hidden grid grid-cols-2 gap-4">
-            <div className="bg-white rounded-lg overflow-hidden shadow-md">
-              <img
+            <div className="bg-white rounded-lg overflow-hidden shadow-md relative h-40">
+              <SmartImage
                 src="/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-13.webp"
                 alt="Hochzeit im Rathaus"
-                className="w-full h-40 object-cover"
+                fill
+                priority
+                sizes="(max-width: 1024px) 50vw, 0vw"
+                className="object-cover"
               />
             </div>
-            <div className="bg-white rounded-lg overflow-hidden shadow-md">
-              <img
+            <div className="bg-white rounded-lg overflow-hidden shadow-md relative h-40">
+              <SmartImage
                 src="/images/Party/Party_55A6675.webp"
                 alt="Party im Rathaus"
-                className="w-full h-40 object-cover"
+                fill
+                priority
+                sizes="(max-width: 1024px) 50vw, 0vw"
+                className="object-cover"
               />
             </div>
           </div>
@@ -175,11 +182,14 @@ export default function Home() {
                 von 10 bis 200 Personen nutzen.
               </p>
             </div>
-            <div className="rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
-              <img
+            <div className="rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 relative aspect-[4/3]">
+              <SmartImage
                 src="/images/Außenansicht/Outside_rathaus_outside_view.webp"
                 alt="Außenansicht des historischen Rathauses Friedrichshagen mit Fassade und Eingangsbereich"
-                className="w-full h-full object-cover"
+                fill
+                priority
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover"
               />
             </div>
           </div>
@@ -247,11 +257,15 @@ export default function Home() {
               onClick={() => openLightbox('ratssaal')}
               className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
             >
-              <img
-                src="/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-27.webp"
-                alt="Hochzeitsfeier im Alten Ratssaal mit Gästen"
-                className="w-full aspect-video object-cover"
-              />
+              <div className="relative aspect-video">
+                <SmartImage
+                  src="/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-27.webp"
+                  alt="Hochzeitsfeier im Alten Ratssaal mit Gästen"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-neutral-900 mb-2">
                   Alter Ratssaal
@@ -272,11 +286,15 @@ export default function Home() {
               onClick={() => openLightbox('ratskeller')}
               className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
             >
-              <img
-                src="/images/Ratskeller/Ratskeller__55A1776.webp"
-                alt="Ratskeller mit gedeckten Tischen für Feiern"
-                className="w-full aspect-video object-cover"
-              />
+              <div className="relative aspect-video">
+                <SmartImage
+                  src="/images/Ratskeller/Ratskeller__55A1776.webp"
+                  alt="Ratskeller mit gedeckten Tischen für Feiern"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-neutral-900 mb-2">
                   Ratskeller
@@ -297,11 +315,15 @@ export default function Home() {
               onClick={() => openLightbox('hoftheke')}
               className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
             >
-              <img
-                src="/images/Hoftheke/Hoftheke_55A8729-Panorama.webp"
-                alt="Panoramaaufnahme der Hoftheke mit angrenzendem Innenhof"
-                className="w-full aspect-video object-cover"
-              />
+              <div className="relative aspect-video">
+                <SmartImage
+                  src="/images/Hoftheke/Hoftheke_55A8729-Panorama.webp"
+                  alt="Panoramaaufnahme der Hoftheke mit angrenzendem Innenhof"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-neutral-900 mb-2">
                   Hoftheke
@@ -321,11 +343,15 @@ export default function Home() {
               onClick={() => openLightbox('buergermeisterzimmer')}
               className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
             >
-              <img
-                src="/images/Bürgermeisterzimmer/Bürgermeisterzimmer_20160615-IMG_0361.webp"
-                alt="Historisches Bürgermeisterzimmer mit Holzvertäfelung und klassischem Mobiliar"
-                className="w-full aspect-video object-cover"
-              />
+              <div className="relative aspect-video">
+                <SmartImage
+                  src="/images/Bürgermeisterzimmer/Bürgermeisterzimmer_20160615-IMG_0361.webp"
+                  alt="Historisches Bürgermeisterzimmer mit Holzvertäfelung und klassischem Mobiliar"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-neutral-900 mb-2">
                   Bürgermeisterzimmer
@@ -591,11 +617,15 @@ export default function Home() {
               </p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300">
-              <img
-                src="/images/map/makrolage.webp"
-                alt="Makrolage Berlin Friedrichshagen"
-                className="w-full h-auto object-contain rounded"
-              />
+              <div className="relative w-full aspect-square">
+                <SmartImage
+                  src="/images/map/makrolage.webp"
+                  alt="Makrolage Berlin Friedrichshagen"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-contain rounded"
+                />
+              </div>
             </div>
           </div>
         </div>

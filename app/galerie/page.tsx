@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { Download, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { SmartImage } from '@/components/smart-image';
 import { useState } from 'react';
 
 const categories = [
@@ -190,16 +191,19 @@ export default function GaleriePage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredItems.map((item) => (
+            {filteredItems.map((item, index) => (
               <div
                 key={item.id}
                 className="bg-neutral-50 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
               >
                 <div className="aspect-[4/3] relative overflow-hidden bg-neutral-200">
-                  <img
+                  <SmartImage
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    fill
+                    loading={index < 9 ? 'eager' : 'lazy'}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-300 hover:scale-105"
                   />
                 </div>
                 <div className="p-6">
