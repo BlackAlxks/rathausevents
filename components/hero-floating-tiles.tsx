@@ -21,7 +21,7 @@ interface FloatingImage {
 
 const images: FloatingImage[] = [
   {
-    src: '/images/Außenansicht/Outside_rathaus_outside_view.jpg',
+    src: '/images/Außenansicht/Outside_rathaus_outside_view.webp',
     alt: 'Außenansicht Rathaus',
     initialPosition: { x: 15, y: 25, z: 1, scale: 0.5 },
     speed: 1.2,
@@ -29,7 +29,7 @@ const images: FloatingImage[] = [
     exitDirection: { x: -150, y: -100 },
   },
   {
-    src: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-3.jpg',
+    src: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-3.webp',
     alt: 'Hochzeit im Rathaus',
     initialPosition: { x: 75, y: 20, z: 2, scale: 0.45 },
     speed: 1.5,
@@ -37,7 +37,7 @@ const images: FloatingImage[] = [
     exitDirection: { x: 130, y: -80 },
   },
   {
-    src: '/images/Hoftheke/Hoftheke_55A8729-Panorama.jpg',
+    src: '/images/Hoftheke/Hoftheke_55A8729-Panorama.webp',
     alt: 'Hoftheke Panorama',
     initialPosition: { x: 80, y: 60, z: 3, scale: 0.5 },
     speed: 1.0,
@@ -45,7 +45,7 @@ const images: FloatingImage[] = [
     exitDirection: { x: 160, y: 90 },
   },
   {
-    src: '/images/Ratskeller/Ratskeller__55A1776.jpg',
+    src: '/images/Ratskeller/Ratskeller__55A1776.webp',
     alt: 'Ratskeller',
     initialPosition: { x: 25, y: 65, z: 4, scale: 0.55 },
     speed: 1.3,
@@ -53,7 +53,7 @@ const images: FloatingImage[] = [
     exitDirection: { x: -130, y: 110 },
   },
   {
-    src: '/images/F&B/F&B_20160615-IMG_0173.JPG',
+    src: '/images/F&B/F&B_20160615-IMG_0173.webp',
     alt: 'Food & Beverage',
     initialPosition: { x: 50, y: 45, z: 5, scale: 0.45 },
     speed: 1.1,

@@ -24,30 +24,30 @@ import {
 
 const roomGalleries = {
   ratssaal: [
-    { src: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-13.jpg', alt: 'Festlich gedeckte Tafel im Alten Ratssaal' },
-    { src: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-22.jpg', alt: 'Trauung im Alten Ratssaal' },
-    { src: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-27.jpg', alt: 'Hochzeitsfeier im Alten Ratssaal' },
-    { src: '/images/Party/Party_55A6675.jpg', alt: 'Party im Ratssaal' },
-    { src: '/images/Party/Party_55A7097.jpg', alt: 'Event im Saal' },
+    { src: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-13.webp', alt: 'Festlich gedeckte Tafel im Alten Ratssaal' },
+    { src: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-22.webp', alt: 'Trauung im Alten Ratssaal' },
+    { src: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-27.webp', alt: 'Hochzeitsfeier im Alten Ratssaal' },
+    { src: '/images/Party/Party_55A6675.webp', alt: 'Party im Ratssaal' },
+    { src: '/images/Party/Party_55A7097.webp', alt: 'Event im Saal' },
   ],
   ratskeller: [
-    { src: '/images/Ratskeller/Ratskeller__55A1776.jpg', alt: 'Ratskeller Gewölbe' },
-    { src: '/images/Ratskeller/Ratskeller__55A1262.jpg', alt: 'Ratskeller Hauptraum' },
-    { src: '/images/Ratskeller/Ratskeller__55A1842.jpg', alt: 'Ratskeller Feier' },
-    { src: '/images/Ratskeller/Ratskeller__55A1859.jpg', alt: 'Ratskeller Bar' },
-    { src: '/images/Ratskeller/Ratskeller_gaeste.jpg', alt: 'Ratskeller Gäste' },
-    { src: '/images/Ratskeller/Ratskeller_gaeste3.jpg', alt: 'Ratskeller Event' },
+    { src: '/images/Ratskeller/Ratskeller__55A1776.webp', alt: 'Ratskeller Gewölbe' },
+    { src: '/images/Ratskeller/Ratskeller__55A1262.webp', alt: 'Ratskeller Hauptraum' },
+    { src: '/images/Ratskeller/Ratskeller__55A1842.webp', alt: 'Ratskeller Feier' },
+    { src: '/images/Ratskeller/Ratskeller__55A1859.webp', alt: 'Ratskeller Bar' },
+    { src: '/images/Ratskeller/Ratskeller_gaeste.webp', alt: 'Ratskeller Gäste' },
+    { src: '/images/Ratskeller/Ratskeller_gaeste3.webp', alt: 'Ratskeller Event' },
   ],
   hoftheke: [
-    { src: '/images/Hoftheke/Hoftheke_55A8729-Panorama.jpg', alt: 'Hoftheke Panorama' },
-    { src: '/images/Hoftheke/Hoftheke_555A7081.jpg', alt: 'Hoftheke' },
-    { src: '/images/Hoftheke/Hoftheke_55A9612.jpg', alt: 'Hoftheke Innenraum' },
-    { src: '/images/Hoftheke/Hoftheke_55A9885.jpg', alt: 'Hoftheke Sommerfest' },
+    { src: '/images/Hoftheke/Hoftheke_55A8729-Panorama.webp', alt: 'Hoftheke Panorama' },
+    { src: '/images/Hoftheke/Hoftheke_555A7081.webp', alt: 'Hoftheke' },
+    { src: '/images/Hoftheke/Hoftheke_55A9612.webp', alt: 'Hoftheke Innenraum' },
+    { src: '/images/Hoftheke/Hoftheke_55A9885.webp', alt: 'Hoftheke Sommerfest' },
   ],
   buergermeisterzimmer: [
-    { src: '/images/Bürgermeisterzimmer/Bürgermeisterzimmer_20160615-IMG_0361.JPG', alt: 'Historisches Bürgermeisterzimmer' },
-    { src: '/images/Bürgermeisterzimmer/Bürgermeisterzimmer_IMG_0292.JPG', alt: 'Bürgermeisterzimmer Detail' },
-    { src: '/images/Bürgermeisterzimmer/Bürgermeisterzimmer_IMG_0294.JPG', alt: 'Bürgermeisterzimmer Salon' },
+    { src: '/images/Bürgermeisterzimmer/Bürgermeisterzimmer_20160615-IMG_0361.webp', alt: 'Historisches Bürgermeisterzimmer' },
+    { src: '/images/Bürgermeisterzimmer/Bürgermeisterzimmer_IMG_0292.webp', alt: 'Bürgermeisterzimmer Detail' },
+    { src: '/images/Bürgermeisterzimmer/Bürgermeisterzimmer_IMG_0294.webp', alt: 'Bürgermeisterzimmer Salon' },
   ],
 };
 
@@ -140,14 +140,14 @@ export default function Home() {
           <div className="mt-12 lg:hidden grid grid-cols-2 gap-4">
             <div className="bg-white rounded-lg overflow-hidden shadow-md">
               <img
-                src="/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-13.jpg"
+                src="/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-13.webp"
                 alt="Hochzeit im Rathaus"
                 className="w-full h-40 object-cover"
               />
             </div>
             <div className="bg-white rounded-lg overflow-hidden shadow-md">
               <img
-                src="/images/Party/Party_55A6675.jpg"
+                src="/images/Party/Party_55A6675.webp"
                 alt="Party im Rathaus"
                 className="w-full h-40 object-cover"
               />
@@ -177,7 +177,7 @@ export default function Home() {
             </div>
             <div className="rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
               <img
-                src="/images/Außenansicht/Outside_rathaus_outside_view.jpg"
+                src="/images/Außenansicht/Outside_rathaus_outside_view.webp"
                 alt="Außenansicht des historischen Rathauses Friedrichshagen mit Fassade und Eingangsbereich"
                 className="w-full h-full object-cover"
               />
@@ -248,7 +248,7 @@ export default function Home() {
               className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
             >
               <img
-                src="/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-27.jpg"
+                src="/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-27.webp"
                 alt="Hochzeitsfeier im Alten Ratssaal mit Gästen"
                 className="w-full aspect-video object-cover"
               />
@@ -273,7 +273,7 @@ export default function Home() {
               className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
             >
               <img
-                src="/images/Ratskeller/Ratskeller__55A1776.jpg"
+                src="/images/Ratskeller/Ratskeller__55A1776.webp"
                 alt="Ratskeller mit gedeckten Tischen für Feiern"
                 className="w-full aspect-video object-cover"
               />
@@ -298,7 +298,7 @@ export default function Home() {
               className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
             >
               <img
-                src="/images/Hoftheke/Hoftheke_55A8729-Panorama.jpg"
+                src="/images/Hoftheke/Hoftheke_55A8729-Panorama.webp"
                 alt="Panoramaaufnahme der Hoftheke mit angrenzendem Innenhof"
                 className="w-full aspect-video object-cover"
               />
@@ -322,7 +322,7 @@ export default function Home() {
               className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
             >
               <img
-                src="/images/Bürgermeisterzimmer/Bürgermeisterzimmer_20160615-IMG_0361.JPG"
+                src="/images/Bürgermeisterzimmer/Bürgermeisterzimmer_20160615-IMG_0361.webp"
                 alt="Historisches Bürgermeisterzimmer mit Holzvertäfelung und klassischem Mobiliar"
                 className="w-full aspect-video object-cover"
               />
@@ -592,7 +592,7 @@ export default function Home() {
             </div>
             <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300">
               <img
-                src="/images/map/makrolage.png"
+                src="/images/map/makrolage.webp"
                 alt="Makrolage Berlin Friedrichshagen"
                 className="w-full h-auto object-contain rounded"
               />

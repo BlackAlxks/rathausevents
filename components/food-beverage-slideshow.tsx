@@ -4,13 +4,13 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const fbImages = [
-  { src: '/images/F&B/F&B_buffet.jpg', alt: 'Buffetsetup' },
-  { src: '/images/F&B/F&B_20160615-IMG_0154.JPG', alt: 'Getränke und Speisen' },
-  { src: '/images/F&B/F&B_20160615-IMG_0170.JPG', alt: 'Catering' },
-  { src: '/images/F&B/F&B_20160615-IMG_0173.JPG', alt: 'Speisen' },
-  { src: '/images/F&B/F&B_20160615-IMG_0286.JPG', alt: 'Food & Beverage' },
-  { src: '/images/F&B/F&B_20160615-IMG_0427.JPG', alt: 'Gastronomie' },
-  { src: '/images/F&B/F&B_Zapfanlage_01.jpg', alt: 'Zapfanlage' },
+  { src: '/images/F&B/F&B_buffet.webp', alt: 'Buffetsetup' },
+  { src: '/images/F&B/F&B_20160615-IMG_0154.webp', alt: 'Getränke und Speisen' },
+  { src: '/images/F&B/F&B_20160615-IMG_0170.webp', alt: 'Catering' },
+  { src: '/images/F&B/F&B_20160615-IMG_0173.webp', alt: 'Speisen' },
+  { src: '/images/F&B/F&B_20160615-IMG_0286.webp', alt: 'Food & Beverage' },
+  { src: '/images/F&B/F&B_20160615-IMG_0427.webp', alt: 'Gastronomie' },
+  { src: '/images/F&B/F&B_Zapfanlage_01.webp', alt: 'Zapfanlage' },
 ];
 
 export function FoodBeverageSlideshow() {
