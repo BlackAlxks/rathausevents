@@ -57,13 +57,14 @@ export function HeroSlideshow() {
   };
 
   return (
-    <div className="relative w-full h-[500px] lg:h-[600px] overflow-hidden">
+    <div className="relative w-full h-[500px] lg:h-[600px] overflow-hidden" suppressHydrationWarning>
       {heroSlides.map((slide, index) => (
         <div
           key={slide.src}
           className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
             index === currentSlide ? 'opacity-100' : 'opacity-0'
           }`}
+          suppressHydrationWarning
         >
           <SmartImage
             src={slide.src}
@@ -93,7 +94,7 @@ export function HeroSlideshow() {
         <ChevronRight className="w-6 h-6" />
       </button>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10" suppressHydrationWarning>
         {heroSlides.map((_, index) => (
           <button
             key={index}

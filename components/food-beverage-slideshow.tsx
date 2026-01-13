@@ -34,7 +34,7 @@ export function FoodBeverageSlideshow() {
 
   return (
     <div className="bg-white p-8 rounded-lg shadow-sm">
-      <div className="relative group aspect-square rounded overflow-hidden">
+      <div className="relative group aspect-square rounded overflow-hidden" suppressHydrationWarning>
         <SmartImage
           src={fbImages[currentIndex].src}
           alt={fbImages[currentIndex].alt}
@@ -61,7 +61,7 @@ export function FoodBeverageSlideshow() {
         </button>
       </div>
 
-      <div className="flex gap-2 mt-4 overflow-x-auto pb-2">
+      <div className="flex gap-2 mt-4 overflow-x-auto pb-2" suppressHydrationWarning>
         {fbImages.map((image, index) => (
           <button
             key={index}

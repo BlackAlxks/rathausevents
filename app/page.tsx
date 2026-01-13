@@ -550,7 +550,7 @@ export default function Home() {
             <div className="flex items-start gap-4">
               <div className="flex-1">
                 <h3 className="text-xl font-bold text-neutral-900 mb-3">Beispiel-Pauschalen im Überblick</h3>
-                <div className="relative overflow-hidden">
+                <div className="relative overflow-hidden" suppressHydrationWarning>
                   <div className="transition-all duration-500 ease-in-out">
                     <div className="border border-neutral-200 rounded-lg p-5">
                       <div className="flex justify-between items-start mb-3">
@@ -567,7 +567,7 @@ export default function Home() {
                       </ul>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between mt-4">
+                  <div className="flex items-center justify-between mt-4" suppressHydrationWarning>
                     <button
                       onClick={prevPackage}
                       className="p-2 rounded-full border border-neutral-300 hover:bg-neutral-50 transition-colors"

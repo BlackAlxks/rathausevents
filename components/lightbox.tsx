@@ -26,10 +26,10 @@ export function Lightbox({ images, isOpen, onClose, initialIndex = 0, showFoodNo
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4" suppressHydrationWarning>
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 text-white hover:text-amber-400 transition-colors z-50"
+        className="absolute top-4 right-4 text-white hover:text-brand-sand transition-colors z-50"
         aria-label="Schließen"
       >
         <X className="w-8 h-8" />
@@ -37,7 +37,7 @@ export function Lightbox({ images, isOpen, onClose, initialIndex = 0, showFoodNo
 
       <button
         onClick={handlePrevious}
-        className="absolute left-4 text-white hover:text-amber-400 transition-colors z-50"
+        className="absolute left-4 text-white hover:text-brand-sand transition-colors z-50"
         aria-label="Vorheriges Bild"
       >
         <ChevronLeft className="w-12 h-12" />
@@ -45,14 +45,14 @@ export function Lightbox({ images, isOpen, onClose, initialIndex = 0, showFoodNo
 
       <button
         onClick={handleNext}
-        className="absolute right-4 text-white hover:text-amber-400 transition-colors z-50"
+        className="absolute right-4 text-white hover:text-brand-sand transition-colors z-50"
         aria-label="Nächstes Bild"
       >
         <ChevronRight className="w-12 h-12" />
       </button>
 
       <div className="max-w-6xl w-full">
-        <div className="relative w-full max-h-[80vh] aspect-video">
+        <div className="relative w-full max-h-[80vh] aspect-video" suppressHydrationWarning>
           <SmartImage
             src={images[currentIndex].src}
             alt={images[currentIndex].alt}
@@ -63,7 +63,7 @@ export function Lightbox({ images, isOpen, onClose, initialIndex = 0, showFoodNo
           />
         </div>
 
-        <div className="flex gap-2 mt-4 overflow-x-auto pb-2">
+        <div className="flex gap-2 mt-4 overflow-x-auto pb-2" suppressHydrationWarning>
           {images.map((image, index) => (
             <button
               key={index}
