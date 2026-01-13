@@ -21,17 +21,14 @@ export default function Navigation() {
     <nav className="bg-white border-b border-neutral-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-3">
             <Image
-              src="/logo/Rathaus Events Logo.svg"
+              src="/logo/Rathaus Events Logo neu.png"
               alt="Rathaus Events Logo"
-              width={32}
-              height={32}
-              className="h-8 w-8"
+              width={120}
+              height={40}
+              className="h-10 w-auto"
             />
-            <span className="font-semibold text-lg text-neutral-900">
-              Rathaus Events
-            </span>
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
@@ -41,14 +38,15 @@ export default function Navigation() {
                 href={link.href}
                 className={`text-sm font-medium transition-colors ${
                   pathname === link.href
-                    ? 'text-amber-700'
+                    ? 'text-neutral-600 hover:text-neutral-900'
                     : 'text-neutral-600 hover:text-neutral-900'
                 }`}
+                style={pathname === link.href ? { color: 'var(--color-primary)' } : undefined}
               >
                 {link.label}
               </Link>
             ))}
-            <Button asChild size="sm" className="bg-amber-700 hover:bg-amber-800">
+            <Button asChild size="sm" style={{ backgroundColor: 'var(--color-primary)', color: 'white' }} className="hover:opacity-90">
               <Link href="/kontakt">Event anfragen</Link>
             </Button>
           </div>
@@ -76,16 +74,18 @@ export default function Navigation() {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`block py-2 text-base font-medium ${
                   pathname === link.href
-                    ? 'text-amber-700'
+                    ? ''
                     : 'text-neutral-600'
                 }`}
+                style={pathname === link.href ? { color: 'var(--color-primary)' } : undefined}
               >
                 {link.label}
               </Link>
             ))}
             <Button
               asChild
-              className="w-full bg-amber-700 hover:bg-amber-800"
+              className="w-full hover:opacity-90"
+              style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}
               onClick={() => setMobileMenuOpen(false)}
             >
               <Link href="/kontakt">Event anfragen</Link>

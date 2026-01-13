@@ -68,9 +68,12 @@ export function FoodBeverageSlideshow() {
             onClick={() => setCurrentIndex(index)}
             className={`flex-shrink-0 w-16 h-16 rounded overflow-hidden border-2 transition-all relative ${
               index === currentIndex
-                ? 'border-amber-700 scale-110'
-                : 'border-neutral-200 hover:border-amber-400'
+                ? 'scale-110'
+                : 'border-neutral-200'
             }`}
+            style={{
+              borderColor: index === currentIndex ? 'var(--color-primary)' : undefined
+            }}
           >
             <SmartImage
               src={image.src}

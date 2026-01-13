@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <Building2 className="h-5 w-5 text-amber-600" />
+              <Building2 className="h-5 w-5 text-brand-sand" />
               <span className="font-semibold text-white">
                 Rathaus Friedrichshagen
               </span>
@@ -23,14 +23,14 @@ export default function Footer() {
             <h3 className="font-semibold text-white mb-4">Kontakt</h3>
             <div className="space-y-3 text-sm">
               <div className="flex items-start space-x-2">
-                <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0 text-amber-600" />
+                <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0 text-brand-sand" />
                 <div>
                   <div>Bölschestr. 87/88</div>
                   <div>12587 Berlin</div>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
-                <Phone className="h-4 w-4 flex-shrink-0 text-amber-600" />
+                <Phone className="h-4 w-4 flex-shrink-0 text-brand-sand" />
                 <a
                   href="tel:01624533204"
                   className="hover:text-white transition-colors"
@@ -39,7 +39,7 @@ export default function Footer() {
                 </a>
               </div>
               <div className="flex items-center space-x-2">
-                <Mail className="h-4 w-4 flex-shrink-0 text-amber-600" />
+                <Mail className="h-4 w-4 flex-shrink-0 text-brand-sand" />
                 <a
                   href="mailto:convention@brauerei-friedrichshagen.de"
                   className="hover:text-white transition-colors"
@@ -48,7 +48,7 @@ export default function Footer() {
                 </a>
               </div>
               <div className="flex items-start space-x-2">
-                <Train className="h-4 w-4 mt-0.5 flex-shrink-0 text-amber-600" />
+                <Train className="h-4 w-4 mt-0.5 flex-shrink-0 text-brand-sand" />
                 <div>S3 Friedrichshagen, Tram 60/61</div>
               </div>
             </div>

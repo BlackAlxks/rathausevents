@@ -9,9 +9,10 @@ interface LightboxProps {
   isOpen: boolean;
   onClose: () => void;
   initialIndex?: number;
+  showFoodNotice?: boolean;
 }
 
-export function Lightbox({ images, isOpen, onClose, initialIndex = 0 }: LightboxProps) {
+export function Lightbox({ images, isOpen, onClose, initialIndex = 0, showFoodNotice = false }: LightboxProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
 
   if (!isOpen) return null;
@@ -69,9 +70,12 @@ export function Lightbox({ images, isOpen, onClose, initialIndex = 0 }: Lightbox
               onClick={() => setCurrentIndex(index)}
               className={`flex-shrink-0 w-20 h-20 rounded overflow-hidden border-2 transition-all relative ${
                 index === currentIndex
-                  ? 'border-amber-400 scale-110'
+                  ? 'scale-110'
                   : 'border-transparent hover:border-white/50'
               }`}
+              style={{
+                borderColor: index === currentIndex ? 'var(--color-accent)' : 'transparent'
+              }}
             >
               <SmartImage
                 src={image.src}
@@ -83,6 +87,13 @@ export function Lightbox({ images, isOpen, onClose, initialIndex = 0 }: Lightbox
             </button>
           ))}
         </div>
+        {showFoodNotice && (
+          <div className="mt-4 p-4 bg-white/10 backdrop-blur-sm rounded-lg">
+            <p className="text-white text-sm">
+              <span className="font-semibold">Hinweis:</span> Der Ratskeller ist auch als Restaurant geöffnet. Kommen Sie gern zum Essen vorbei!
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

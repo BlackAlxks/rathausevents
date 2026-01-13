@@ -60,6 +60,11 @@ const config: Config = {
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))',
         },
+        'brand': {
+          'primary': 'var(--color-primary)',
+          'accent': 'var(--color-accent)',
+          'sand': 'var(--color-sand)',
+        },
       },
       keyframes: {
         'accordion-down': {

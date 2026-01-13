@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Lightbox } from '@/components/lightbox';
 import { FoodBeverageSlideshow } from '@/components/food-beverage-slideshow';
-import { HeroFloatingTiles } from '@/components/hero-floating-tiles';
+import { HeroSlideshow } from '@/components/hero-slideshow';
 import { EventProcessSection } from '@/components/event-process-section';
 import { SmartImage } from '@/components/smart-image';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   Building2,
   Users,
@@ -21,6 +21,10 @@ import {
   ArrowRight,
   Phone,
   Mail,
+  Info,
+  X,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 
 const roomGalleries = {
@@ -52,31 +56,47 @@ const roomGalleries = {
   ],
 };
 
+const packageHighlights = [
+  {
+    title: 'Ganztagestagung',
+    price: 'ab 89€ pro Person',
+    features: ['Tagungsraum & Technik', 'Kaffeepausen', 'Mittagessen', 'Getränke ganztägig'],
+  },
+  {
+    title: 'Weihnachtsfeier',
+    price: 'ab 79€ pro Person',
+    features: ['Raummiete inklusive', '3-Gang-Menü', 'Getränkepauschale', 'Weihnachtsdekoration'],
+  },
+  {
+    title: 'Hochzeit',
+    price: 'individuell kalkuliert',
+    features: ['Exklusive Raumnutzung', 'Flexibles Catering', 'Persönliche Beratung', 'Dekoration & Technik'],
+  },
+  {
+    title: 'Sommerfest',
+    price: 'ab 65€ pro Person',
+    features: ['Innenhof-Nutzung', 'BBQ oder Buffet', 'Getränke & Service', 'Outdoor-Equipment'],
+  },
+];
+
 export default function Home() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentGallery, setCurrentGallery] = useState<keyof typeof roomGalleries>('ratssaal');
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const maxScroll = 500;
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.scrollY;
-      const progress = Math.min(scrolled / maxScroll, 1);
-      setScrollProgress(progress);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [packageModalOpen, setPackageModalOpen] = useState(false);
+  const [currentPackage, setCurrentPackage] = useState(0);
 
   const openLightbox = (room: keyof typeof roomGalleries) => {
     setCurrentGallery(room);
     setLightboxOpen(true);
   };
 
-  const heroIsFixed = scrollProgress < 1;
+  const nextPackage = () => {
+    setCurrentPackage((prev) => (prev + 1) % packageHighlights.length);
+  };
+
+  const prevPackage = () => {
+    setCurrentPackage((prev) => (prev === 0 ? packageHighlights.length - 1 : prev - 1));
+  };
 
   return (
     <main className="relative">
@@ -84,103 +104,101 @@ export default function Home() {
         images={roomGalleries[currentGallery]}
         isOpen={lightboxOpen}
         onClose={() => setLightboxOpen(false)}
+        showFoodNotice={currentGallery === 'ratskeller'}
       />
-      <div style={{ height: `${maxScroll}px` }} />
-      <section
-        className="bg-gradient-to-br from-neutral-50 to-amber-50 overflow-hidden"
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          width: '100%',
-          height: '100vh',
-          zIndex: 10,
-          opacity: heroIsFixed ? 1 : 0,
-          pointerEvents: heroIsFixed ? 'auto' : 'none',
-          transition: 'opacity 0.3s ease-out',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <HeroFloatingTiles />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-8">
-          <div className="max-w-2xl lg:max-w-3xl">
-            <div className="text-amber-700 font-medium mb-3">
-              Eventlocation in Berlin-Friedrichshagen für 10 bis 200 Personen
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 mb-6 leading-tight">
-              Feiern, Tagen und Kultur im historischen Rathaus Friedrichshagen
-            </h1>
-            <p className="text-lg text-neutral-600 mb-8 leading-relaxed">
-              Ob Hochzeit, Firmenfeier, Konzert oder Workshop: Im Rathaus
-              Friedrichshagen triffst du auf ein Stück Berliner Geschichte, das
-              heute als wandelbare Eventlocation genutzt wird. Historische
-              Architektur, flexible Raumkonzepte und ein erfahrenes Team im
-              Hintergrund sorgen dafür, dass aus deiner Idee ein stimmiges Event
-              wird.
+
+      {packageModalOpen && (
+        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg max-w-2xl w-full p-8 relative">
+            <button
+              onClick={() => setPackageModalOpen(false)}
+              className="absolute top-4 right-4 text-neutral-500 hover:text-neutral-900"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <h3 className="text-2xl font-bold text-neutral-900 mb-6">
+              Pauschalen-Übersicht
+            </h3>
+            <p className="text-neutral-700 mb-6">
+              Hier finden Sie eine Auswahl unserer beliebtesten Veranstaltungspauschalen. Alle Angebote sind individuell anpassbar.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                asChild
-                size="lg"
-                className="bg-amber-700 hover:bg-amber-800 transition-all duration-200 hover:shadow-lg"
-              >
-                <Link href="/kontakt">
-                  Jetzt Event anfragen
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="transition-all duration-200 hover:border-amber-700 hover:text-amber-700">
-                <Link href="#raeume">Räume entdecken</Link>
-              </Button>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {packageHighlights.map((pkg, idx) => (
+                <div
+                  key={idx}
+                  className="border border-neutral-200 rounded-lg p-4 hover:border-brand-accent transition-colors"
+                >
+                  <h4 className="font-bold text-neutral-900 mb-2">{pkg.title}</h4>
+                  <p className="text-brand-primary font-semibold mb-3">{pkg.price}</p>
+                  <ul className="space-y-1 text-sm text-neutral-700">
+                    {pkg.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <CheckCircle className="w-4 h-4 text-brand-accent flex-shrink-0 mt-0.5" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 p-4 bg-neutral-50 rounded-lg">
+              <p className="text-sm text-neutral-700">
+                Die vollständigen Pauschalen mit allen Details finden Sie in den PDF-Dokumenten zum Download.
+              </p>
             </div>
           </div>
+        </div>
+      )}
 
-          <div className="mt-12 lg:hidden grid grid-cols-2 gap-4">
-            <div className="bg-white rounded-lg overflow-hidden shadow-md relative h-40">
-              <SmartImage
-                src="/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-13.webp"
-                alt="Hochzeit im Rathaus"
-                fill
-                priority
-                sizes="(max-width: 1024px) 50vw, 0vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="bg-white rounded-lg overflow-hidden shadow-md relative h-40">
-              <SmartImage
-                src="/images/Party/Party_55A6675.webp"
-                alt="Party im Rathaus"
-                fill
-                priority
-                sizes="(max-width: 1024px) 50vw, 0vw"
-                className="object-cover"
-              />
+      <section className="relative">
+        <HeroSlideshow />
+        <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+          <div className="text-center text-white px-4 max-w-4xl">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 drop-shadow-lg">
+              Rathaus Friedrichshagen
+            </h1>
+            <p className="text-xl sm:text-2xl lg:text-3xl font-light mb-8 drop-shadow-lg">
+              Ihre Eventlocation im Herzen von Berlin
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center pointer-events-auto">
+              <Link href="/kontakt">
+                <Button size="lg" style={{ backgroundColor: 'var(--color-primary)', color: 'white' }} className="hover:opacity-90 transition-opacity">
+                  Jetzt anfragen
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="/galerie">
+                <Button size="lg" variant="outline" className="bg-white/90 hover:bg-white border-white">
+                  <Camera className="mr-2 h-5 w-5" />
+                  Zur Galerie
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <div>
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-start mb-8">
-            <div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <div className="space-y-6 max-w-xl">
+              <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900">
                 Was das Rathaus Friedrichshagen besonders macht
               </h2>
-              <p className="text-lg text-neutral-600 mb-6">
-                Ein Haus mit vielen Möglichkeiten, alles unter einem Dach.
-              </p>
-              <p className="text-neutral-700 leading-relaxed">
-                Das historische Rathaus Friedrichshagen verbindet den Charme
-                eines denkmalgeschützten Gebäudes mit den Anforderungen moderner
-                Veranstaltungen. Die Räume wurden sorgsam saniert, ohne ihren
-                Charakter zu verlieren, und lassen sich für verschiedene Setups
-                von 10 bis 200 Personen nutzen.
-              </p>
+              <div className="space-y-4 text-neutral-700 leading-relaxed">
+                <p>
+                  Das historische Rathaus Friedrichshagen bietet die ideale Kulisse für Ihre Firmenveranstaltung oder private Feier. Ob Sommerfest, Weihnachtsfeier, Teamevent, Geburtstag oder Hochzeit – wir schaffen den passenden Rahmen für Ihre Veranstaltung.
+                </p>
+                <p>
+                  Unsere flexiblen Räumlichkeiten lassen sich individuell kombinieren und auf Ihre Bedürfnisse abstimmen. Von intimen Zusammenkünften mit 10 Personen bis zu großen Feiern mit bis zu 200 Gästen passen wir die Raumkonfiguration genau an Ihr Event an.
+                </p>
+                <p>
+                  Mit unserem professionellen Eventmanagement und erfahrenen Servicepersonal begleiten wir Sie von der ersten Planung bis zur erfolgreichen Durchführung. Wir entwickeln maßgeschneiderte Eventpakete, die exakt auf Ihre Vorstellungen und Ihr Budget zugeschnitten sind.
+                </p>
+                <p>
+                  Das denkmalgeschützte Gebäude vereint historisches Ambiente mit moderner Veranstaltungstechnik – eine einzigartige Atmosphäre, die Ihre Gäste begeistern wird.
+                </p>
+              </div>
             </div>
             <div className="rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 relative aspect-[4/3]">
               <SmartImage
@@ -193,56 +211,40 @@ export default function Home() {
               />
             </div>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
             <div className="flex items-start space-x-3">
-              <Building2 className="h-6 w-6 text-amber-700 flex-shrink-0 mt-1" />
+              <Building2 className="h-6 w-6 flex-shrink-0 mt-1" style={{ color: 'var(--color-primary)' }} />
               <div>
-                <h3 className="font-semibold text-neutral-900 mb-1">
-                  Historisch und repräsentativ
-                </h3>
-                <p className="text-sm text-neutral-600">
-                  Denkmalgeschützte Räume im Stil der Kaiserzeit
-                </p>
+                <h3 className="font-semibold text-neutral-900 mb-1">Denkmalgeschützt</h3>
+                <p className="text-sm text-neutral-600">Historisches Gebäude mit Charakter</p>
               </div>
             </div>
             <div className="flex items-start space-x-3">
-              <Users className="h-6 w-6 text-amber-700 flex-shrink-0 mt-1" />
+              <Users className="h-6 w-6 flex-shrink-0 mt-1" style={{ color: 'var(--color-primary)' }} />
               <div>
-                <h3 className="font-semibold text-neutral-900 mb-1">
-                  Flexibel und wandelbar
-                </h3>
-                <p className="text-sm text-neutral-600">
-                  Passende Setups für 10 bis 200 Personen
-                </p>
+                <h3 className="font-semibold text-neutral-900 mb-1">10 bis 200 Gäste</h3>
+                <p className="text-sm text-neutral-600">Flexibel skalierbar</p>
               </div>
             </div>
             <div className="flex items-start space-x-3">
-              <Music className="h-6 w-6 text-amber-700 flex-shrink-0 mt-1" />
+              <Music className="h-6 w-6 flex-shrink-0 mt-1" style={{ color: 'var(--color-primary)' }} />
               <div>
-                <h3 className="font-semibold text-neutral-900 mb-1">
-                  Alle Eventarten
-                </h3>
-                <p className="text-sm text-neutral-600">
-                  Private Feiern, Business, Kultur und Produktionen
-                </p>
+                <h3 className="font-semibold text-neutral-900 mb-1">Moderne Technik</h3>
+                <p className="text-sm text-neutral-600">Sound, Licht & Präsentation</p>
               </div>
             </div>
             <div className="flex items-start space-x-3">
-              <CheckCircle className="h-6 w-6 text-amber-700 flex-shrink-0 mt-1" />
+              <MapPin className="h-6 w-6 flex-shrink-0 mt-1" style={{ color: 'var(--color-primary)' }} />
               <div>
-                <h3 className="font-semibold text-neutral-900 mb-1">
-                  Persönliche Betreuung
-                </h3>
-                <p className="text-sm text-neutral-600">
-                  Von der ersten Idee bis zum Veranstaltungsende
-                </p>
+                <h3 className="font-semibold text-neutral-900 mb-1">Top-Lage Berlin</h3>
+                <p className="text-sm text-neutral-600">Sehr gut erreichbar</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="raeume" className="py-16 lg:py-24 bg-neutral-50">
+      <section className="py-16 lg:py-24 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
@@ -270,7 +272,7 @@ export default function Home() {
                 <h3 className="text-xl font-bold text-neutral-900 mb-2">
                   Alter Ratssaal
                 </h3>
-                <p className="text-sm text-amber-700 mb-3">
+                <p className="text-sm mb-3" style={{ color: 'var(--color-primary)' }}>
                   Für Feste, Tagungen und Konzerte
                 </p>
                 <p className="text-neutral-700 leading-relaxed">
@@ -294,19 +296,24 @@ export default function Home() {
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
+                <div className="absolute top-3 right-3">
+                  <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full" style={{ backgroundColor: 'var(--color-sand)', color: 'var(--color-primary)' }}>
+                    Auch für Essen geöffnet
+                  </span>
+                </div>
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-neutral-900 mb-2">
                   Ratskeller
                 </h3>
-                <p className="text-sm text-amber-700 mb-3">
+                <p className="text-sm mb-3" style={{ color: 'var(--color-primary)' }}>
                   Rustikaler Keller für Feiern
                 </p>
                 <p className="text-neutral-700 leading-relaxed">
                   Der gemütliche Gegenpol zum großen Saal. Mit historischem
                   Gewölbe, Bar und Platz für Buffet, kleine Bühne oder
                   Tanzfläche. Ideal für Weihnachtsfeiern, Geburtstage und
-                  Themenabende.
+                  Themenabende. Kommen Sie auch gern zum Essen vorbei!
                 </p>
               </div>
             </div>
@@ -328,7 +335,7 @@ export default function Home() {
                 <h3 className="text-xl font-bold text-neutral-900 mb-2">
                   Hoftheke
                 </h3>
-                <p className="text-sm text-amber-700 mb-3">
+                <p className="text-sm mb-3" style={{ color: 'var(--color-primary)' }}>
                   Raum mit Hofzugang
                 </p>
                 <p className="text-neutral-700 leading-relaxed">
@@ -356,236 +363,173 @@ export default function Home() {
                 <h3 className="text-xl font-bold text-neutral-900 mb-2">
                   Bürgermeisterzimmer
                 </h3>
-                <p className="text-sm text-amber-700 mb-3">
-                  Historische Salons
+                <p className="text-sm mb-3" style={{ color: 'var(--color-primary)' }}>
+                  Repräsentativer Salon
                 </p>
                 <p className="text-neutral-700 leading-relaxed">
-                  Zwei holzvertäfelte Salons mit besonderem Flair. Für
-                  vertrauliche Gespräche, exklusive Empfänge oder als ruhiger
-                  Rückzugsort innerhalb größerer Events.
+                  Historisches Ambiente mit Holzvertäfelung und klassischem
+                  Mobiliar. Perfekt für kleine Empfänge, Besprechungen oder
+                  standesamtliche Trauungen bis zu 30 Personen.
                 </p>
               </div>
             </div>
-          </div>
-          <div className="mt-8 flex items-center justify-center text-sm text-neutral-600">
-            <CheckCircle className="h-4 w-4 mr-2 text-amber-700" />
-            Alle Ebenen sind barrierefrei über einen Aufzug erreichbar
           </div>
         </div>
       </section>
 
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
-              Für welchen Anlass suchst du eine Location?
+              Von der Idee zum fertigen Event
             </h2>
             <p className="text-lg text-neutral-600">
-              Flexibel in Anlass, Ablauf und Größe von 10 bis 200 Personen.
+              Wir begleiten Sie durch den gesamten Planungsprozess – mit persönlicher Beratung und professioneller Umsetzung.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-amber-50 to-white p-8 rounded-lg border border-amber-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-amber-200 cursor-pointer">
-              <Heart className="h-8 w-8 text-amber-700 mb-4" />
+          <EventProcessSection />
+        </div>
+      </section>
+
+      <section className="py-16 lg:py-24 bg-neutral-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
+              Warum Veranstalter gern mit uns arbeiten
+            </h2>
+            <p className="text-lg text-neutral-600">
+              Verlässliche Planung, professionelle Umsetzung und ein eingespieltes Team.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'var(--color-sand)' }}>
+                <Briefcase className="h-6 w-6" style={{ color: 'var(--color-primary)' }} />
+              </div>
               <h3 className="text-xl font-bold text-neutral-900 mb-3">
-                Hochzeiten und private Feiern
+                Professionelles Team
               </h3>
               <p className="text-neutral-700 leading-relaxed">
-                Standesamtliche Trauung, Hochzeit, Geburtstag oder Jubiläum:
-                Empfang, Essen und Feier unter einem Dach. Der Alte Ratssaal
-                bietet die große Bühne, weitere Räume den Rahmen für den
-                Ausklang im kleineren Kreis.
+                Erfahrenes Servicepersonal und geschulte Techniker sorgen für reibungslose Abläufe. Wir kennen unser Haus und wissen, worauf es ankommt.
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-amber-50 to-white p-8 rounded-lg border border-amber-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-amber-200 cursor-pointer">
-              <Briefcase className="h-8 w-8 text-amber-700 mb-4" />
+            <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'var(--color-sand)' }}>
+                <CheckCircle className="h-6 w-6" style={{ color: 'var(--color-primary)' }} />
+              </div>
               <h3 className="text-xl font-bold text-neutral-900 mb-3">
-                Firmenfeiern, Tagungen und Workshops
+                Maßgeschneiderte Angebote
               </h3>
               <p className="text-neutral-700 leading-relaxed">
-                Vom Team-Meeting über Workshops und Tagungen bis zur Jahresfeier:
-                Die Mischung aus professionellem Rahmen und angenehmer
-                Atmosphäre. Präsentationen, Austausch und lockerer Teil am Abend
-                unter einem Dach.
+                Jedes Event ist einzigartig. Wir entwickeln individuelle Konzepte, die genau zu Ihren Anforderungen und Ihrem Budget passen.
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-amber-50 to-white p-8 rounded-lg border border-amber-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-amber-200 cursor-pointer">
-              <Music className="h-8 w-8 text-amber-700 mb-4" />
+            <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'var(--color-sand)' }}>
+                <Users className="h-6 w-6" style={{ color: 'var(--color-primary)' }} />
+              </div>
               <h3 className="text-xl font-bold text-neutral-900 mb-3">
-                Kultur und Konzerte
+                Eingespieltes Team
               </h3>
               <p className="text-neutral-700 leading-relaxed">
-                Konzerte, Lesungen, Kabarett, Tanzveranstaltungen oder
-                Chorkonzerte: Der Alte Ratssaal hat bereits viele Kulturformate
-                gesehen. Bühne, Bestuhlung, Akustik und Licht können an die
-                jeweilige Veranstaltung angepasst werden.
+                Durch langjährige Zusammenarbeit greifen alle Prozesse ineinander. Von der Küche bis zur Technik – bei uns arbeiten alle Hand in Hand.
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-amber-50 to-white p-8 rounded-lg border border-amber-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-amber-200 cursor-pointer">
-              <Camera className="h-8 w-8 text-amber-700 mb-4" />
+            <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'var(--color-sand)' }}>
+                <Building2 className="h-6 w-6" style={{ color: 'var(--color-primary)' }} />
+              </div>
               <h3 className="text-xl font-bold text-neutral-900 mb-3">
-                Drehs und Fotoshootings
+                Planungssicherheit
               </h3>
               <p className="text-neutral-700 leading-relaxed">
-                Die historischen Räume wurden bereits mehrfach als Film- und
-                Fotolocation genutzt. Vom repräsentativen Saal über die Salons
-                bis zum rustikalen Keller bieten viele Motive und Perspektiven.
+                Klare Absprachen, verlässliche Termine und transparente Kostenplanung. Sie wissen jederzeit, woran Sie sind.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'var(--color-sand)' }}>
+                <Heart className="h-6 w-6" style={{ color: 'var(--color-primary)' }} />
+              </div>
+              <h3 className="text-xl font-bold text-neutral-900 mb-3">
+                Persönliche Betreuung
+              </h3>
+              <p className="text-neutral-700 leading-relaxed">
+                Ein fester Ansprechpartner koordiniert Ihre Veranstaltung von Anfang bis Ende. Kurze Wege, schnelle Entscheidungen.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'var(--color-sand)' }}>
+                <Music className="h-6 w-6" style={{ color: 'var(--color-primary)' }} />
+              </div>
+              <h3 className="text-xl font-bold text-neutral-900 mb-3">
+                Komplette Ausstattung
+              </h3>
+              <p className="text-neutral-700 leading-relaxed">
+                Von Sound- und Lichttechnik bis zur Dekoration – wir stellen alles bereit oder vermitteln zuverlässige Partner.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <EventProcessSection />
-
-      <section className="py-16 lg:py-24 bg-neutral-50">
+      <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
-                Essen, Trinken und planbare Pauschalen
+              <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-6">
+                Catering & Gastronomie
               </h2>
-              <p className="text-lg text-neutral-600 mb-6">
-                Kulinarik, die zum Event und zur Gästezahl passt.
+              <p className="text-lg text-neutral-700 leading-relaxed mb-6">
+                In Zusammenarbeit mit der Brauerei Friedrichshagen bieten wir Ihnen
+                professionelle Gastronomie für Ihre Veranstaltung – von kleinen
+                Snacks bis zu mehrgängigen Menüs.
               </p>
-              <p className="text-neutral-700 leading-relaxed mb-6">
-                Gemeinsam mit der Gastronomie im Haus entwickeln wir Menü- oder
-                Buffetvorschläge, die zu deinem Anlass und Budget passen, von
-                der kleinen Runde bis zum großen Fest. Ob gesetztes Dinner,
-                klassisches Buffet oder Fingerfood im Stehen: Wir achten darauf,
-                dass Angebot, Ablauf und Timing stimmig sind.
-              </p>
-              <p className="text-neutral-700 leading-relaxed mb-8">
-                Zusätzlich kannst du aus verschiedenen Getränkepauschalen wählen
-                oder dich individuell beraten lassen. So bleibt die Kalkulation
-                transparent und du weißt schon im Vorfeld, womit du rechnen
-                kannst.
-              </p>
-              <Button
-                asChild
-                variant="outline"
-                className="border-amber-700 text-amber-700 hover:bg-amber-50 transition-all duration-200 hover:border-amber-800"
-              >
-                <a href="/pdf/0-Angebote-Bankett-Brau-und-Genusswerkstatt_2026.pdf" target="_blank" rel="noopener noreferrer">
-                  <Download className="mr-2 h-4 w-4" />
-                  PDF mit Beispielpauschalen herunterladen
+              <div className="space-y-3 mb-6">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
+                  <span className="text-neutral-700">Buffets für jede Gruppengröße</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
+                  <span className="text-neutral-700">Gesetzte Menüs (bis 20 Personen)</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
+                  <span className="text-neutral-700">Flying Buffet & Fingerfood</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
+                  <span className="text-neutral-700">Regionale und saisonale Küche</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
+                  <span className="text-neutral-700">Vegane & vegetarische Optionen</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
+                  <span className="text-neutral-700">Getränkepauschalen oder à la carte</span>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="/pdf/1-Büfett Brau- & Genusswerkstatt 2026.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button style={{ backgroundColor: 'var(--color-primary)', color: 'white' }} className="hover:opacity-90">
+                    <Download className="mr-2 h-4 w-4" />
+                    Buffet-Angebote (PDF)
+                  </Button>
                 </a>
-              </Button>
-            </div>
-            <FoodBeverageSlideshow />
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
-              Warum Veranstalter gern mit uns planen
-            </h2>
-            <p className="text-lg text-neutral-600">
-              Sicherheit in Planung und Ablauf, mit einem Team, das mitdenkt.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div>
-              <div className="w-12 h-12 rounded-lg bg-amber-100 flex items-center justify-center mb-4">
-                <Users className="h-6 w-6 text-amber-700" />
               </div>
-              <h3 className="font-semibold text-neutral-900 mb-2">
-                Fester Kontakt
-              </h3>
-              <p className="text-sm text-neutral-600 leading-relaxed">
-                Persönliche Ansprechpartner für dein Event, die den gesamten
-                Prozess begleiten
-              </p>
             </div>
             <div>
-              <div className="w-12 h-12 rounded-lg bg-amber-100 flex items-center justify-center mb-4">
-                <CheckCircle className="h-6 w-6 text-amber-700" />
-              </div>
-              <h3 className="font-semibold text-neutral-900 mb-2">Erfahrung</h3>
-              <p className="text-sm text-neutral-600 leading-relaxed">
-                Langjährige Expertise mit privaten, geschäftlichen und
-                kulturellen Veranstaltungen
-              </p>
-            </div>
-            <div>
-              <div className="w-12 h-12 rounded-lg bg-amber-100 flex items-center justify-center mb-4">
-                <Building2 className="h-6 w-6 text-amber-700" />
-              </div>
-              <h3 className="font-semibold text-neutral-900 mb-2">
-                Flexibilität
-              </h3>
-              <p className="text-sm text-neutral-600 leading-relaxed">
-                Raumkombinationen und Setups für 10 bis 200 Personen, angepasst
-                an deinen Anlass
-              </p>
-            </div>
-            <div>
-              <div className="w-12 h-12 rounded-lg bg-amber-100 flex items-center justify-center mb-4">
-                <MapPin className="h-6 w-6 text-amber-700" />
-              </div>
-              <h3 className="font-semibold text-neutral-900 mb-2">
-                Erreichbarkeit
-              </h3>
-              <p className="text-sm text-neutral-600 leading-relaxed">
-                Gute Anbindung und barrierefreier Zugang für alle Gäste
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-16 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-neutral-900 mb-2 text-center">
-              Ansprechpartner
-            </h3>
-            <p className="text-neutral-600 text-center mb-8">
-              Deine persönlichen Ansprechpartner für Events im Rathaus Friedrichshagen
-            </p>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white border border-neutral-200 p-8 rounded-lg">
-                <h4 className="text-xl font-bold text-neutral-900 mb-3">Samantha Krebs</h4>
-                <p className="text-sm text-neutral-600 mb-6">
-                  Firmen und Privatfeiern, Hochzeiten, Trauungen, Dreharbeiten
-                </p>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3 text-neutral-700">
-                    <Phone className="h-5 w-5 text-amber-700 flex-shrink-0" />
-                    <a href="tel:01624533204" className="hover:text-amber-700 transition-colors">
-                      0162 4533204
-                    </a>
-                  </div>
-                  <div className="flex items-center gap-3 text-neutral-700">
-                    <Mail className="h-5 w-5 text-amber-700 flex-shrink-0" />
-                    <a href="mailto:convention@brauerei-friedrichshagen.de" className="hover:text-amber-700 transition-colors break-all text-sm">
-                      convention@brauerei-friedrichshagen.de
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-white border border-neutral-200 p-8 rounded-lg">
-                <h4 className="text-xl font-bold text-neutral-900 mb-3">René Baruth</h4>
-                <p className="text-sm text-neutral-600 mb-6">
-                  Firmen und Privatfeiern, Bankette, Veranstaltungen
-                </p>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3 text-neutral-700">
-                    <Phone className="h-5 w-5 text-amber-700 flex-shrink-0" />
-                    <a href="tel:01624533204" className="hover:text-amber-700 transition-colors">
-                      0162 4533204
-                    </a>
-                  </div>
-                  <div className="flex items-center gap-3 text-neutral-700">
-                    <Mail className="h-5 w-5 text-amber-700 flex-shrink-0" />
-                    <a href="mailto:bankett@rathaus-events.de" className="hover:text-amber-700 transition-colors break-all text-sm">
-                      bankett@rathaus-events.de
-                    </a>
-                  </div>
-                </div>
-              </div>
+              <FoodBeverageSlideshow />
             </div>
           </div>
         </div>
@@ -593,18 +537,128 @@ export default function Home() {
 
       <section className="py-16 lg:py-24 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
-                Gut erreichbar in Berlin-Friedrichshagen
-              </h2>
-              <p className="text-lg text-neutral-600 mb-6">
-                Zwischen Bölschestraße und Müggelsee, Stadt und Ausflug in einem.
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
+              Pauschalen & Preise
+            </h2>
+            <p className="text-lg text-neutral-600">
+              Transparente Angebote für verschiedene Veranstaltungsformate. Alle Pauschalen sind individuell anpassbar.
+            </p>
+          </div>
+
+          <div className="relative mb-8 p-6 bg-white rounded-lg shadow-sm">
+            <div className="flex items-start gap-4">
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-neutral-900 mb-3">Beispiel-Pauschalen im Überblick</h3>
+                <div className="relative overflow-hidden">
+                  <div className="transition-all duration-500 ease-in-out">
+                    <div className="border border-neutral-200 rounded-lg p-5">
+                      <div className="flex justify-between items-start mb-3">
+                        <h4 className="text-lg font-bold text-neutral-900">{packageHighlights[currentPackage].title}</h4>
+                        <span className="font-semibold" style={{ color: 'var(--color-primary)' }}>{packageHighlights[currentPackage].price}</span>
+                      </div>
+                      <ul className="space-y-2">
+                        {packageHighlights[currentPackage].features.map((feature, i) => (
+                          <li key={i} className="flex items-start gap-2 text-neutral-700">
+                            <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between mt-4">
+                    <button
+                      onClick={prevPackage}
+                      className="p-2 rounded-full border border-neutral-300 hover:bg-neutral-50 transition-colors"
+                      aria-label="Vorherige Pauschale"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <div className="flex gap-2">
+                      {packageHighlights.map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setCurrentPackage(idx)}
+                          className={`w-2 h-2 rounded-full transition-all ${
+                            idx === currentPackage ? 'w-6' : ''
+                          }`}
+                          style={{
+                            backgroundColor: idx === currentPackage ? 'var(--color-primary)' : 'var(--color-sand)'
+                          }}
+                          aria-label={`Pauschale ${idx + 1}`}
+                        />
+                      ))}
+                    </div>
+                    <button
+                      onClick={nextPackage}
+                      className="p-2 rounded-full border border-neutral-300 hover:bg-neutral-50 transition-colors"
+                      aria-label="Nächste Pauschale"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <button
+                onClick={() => setPackageModalOpen(true)}
+                className="flex-shrink-0 p-2 rounded-full hover:bg-neutral-100 transition-colors"
+                aria-label="Alle Pauschalen anzeigen"
+              >
+                <Info className="w-6 h-6" style={{ color: 'var(--color-primary)' }} />
+              </button>
+            </div>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-6">
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <h3 className="text-lg font-bold text-neutral-900 mb-4">
+                Komplette Pauschalen-Übersicht
+              </h3>
+              <p className="text-neutral-700 mb-4">
+                Laden Sie unsere detaillierten Pauschalen als PDF herunter. Darin finden Sie alle Leistungen, Preise und Optionen.
               </p>
-              <p className="text-neutral-700 leading-relaxed mb-6">
+              <a
+                href="/pdf/0-Angebote-Bankett-Brau-und-Genusswerkstatt_2026.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button style={{ backgroundColor: 'var(--color-primary)', color: 'white' }} className="hover:opacity-90">
+                  <Download className="mr-2 h-4 w-4" />
+                  Pauschalen-Übersicht (PDF)
+                </Button>
+              </a>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <h3 className="text-lg font-bold text-neutral-900 mb-4">
+                Individuelles Angebot
+              </h3>
+              <p className="text-neutral-700 mb-4">
+                Kein passendes Paket dabei? Wir erstellen Ihnen gern ein maßgeschneidertes Angebot für Ihre Veranstaltung.
+              </p>
+              <Link href="/kontakt">
+                <Button style={{ backgroundColor: 'var(--color-primary)', color: 'white' }} className="hover:opacity-90">
+                  <Mail className="mr-2 h-4 w-4" />
+                  Jetzt Angebot anfragen
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-6">
+                Lage & Anfahrt
+              </h2>
+              <p className="text-lg text-neutral-700 leading-relaxed mb-4">
                 Das Rathaus Friedrichshagen liegt an der Bölschestr. 87/88 im
                 Berliner Südosten, in einem lebendigen Stadtteil mit viel
-                Geschichte, Gastronomie und Nähe zum Müggelsee. Deine Gäste
+                Geschichte, Gastronomie und Nähe zum Müggelsee. Ihre Gäste
                 erreichen das Haus mit der S-Bahn, Linie S3, Bahnhof
                 Friedrichshagen, und den Tram-Linien 60 und 61 in kurzer Zeit
                 aus der Innenstadt.
@@ -631,54 +685,35 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 lg:py-24 bg-amber-700 text-white">
+      <section className="py-16 lg:py-24" style={{ backgroundColor: 'var(--color-primary)' }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Lass uns über dein Event sprechen
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+            Lassen Sie uns über Ihre Veranstaltung sprechen
           </h2>
-          <p className="text-lg text-amber-100 mb-8">
-            Kurze Anfrage, klare Rückmeldung. Du hast schon ein Datum im Kopf
-            oder planst erst grob? Wir prüfen die Verfügbarkeit, melden uns mit
-            Rückfragen oder einem ersten Vorschlag und begleiten dich von dort
-            an durch die weitere Planung.
+          <p className="text-xl text-white/90 mb-8">
+            Wir freuen uns darauf, Ihre Ideen kennenzulernen und gemeinsam das perfekte Event zu planen.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="bg-transparent text-white border-white hover:bg-white/10 transition-all duration-200"
-            >
-              <a href="tel:01624533204">
-                <Phone className="mr-2 h-4 w-4" />
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link href="/kontakt">
+              <Button size="lg" className="bg-white hover:bg-neutral-100" style={{ color: 'var(--color-primary)' }}>
+                Kontaktformular
+              </Button>
+            </Link>
+            <a href="tel:01624533204">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                <Phone className="mr-2 h-5 w-5" />
                 Anrufen
-              </a>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              className="bg-white text-amber-700 hover:bg-amber-50 transition-all duration-200 hover:shadow-lg"
-            >
-              <Link href="/kontakt">
-                Jetzt anfragen
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="bg-transparent text-white border-white hover:bg-white/10 transition-all duration-200"
-            >
-              <a href="mailto:convention@brauerei-friedrichshagen.de">
-                <Mail className="mr-2 h-4 w-4" />
+              </Button>
+            </a>
+            <a href="mailto:convention@brauerei-friedrichshagen.de">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                <Mail className="mr-2 h-5 w-5" />
                 E-Mail schreiben
-              </a>
-            </Button>
+              </Button>
+            </a>
           </div>
         </div>
       </section>
-      </div>
     </main>
   );
 }
