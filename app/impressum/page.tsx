@@ -3,7 +3,7 @@
 export default function ImpressumPage() {
   return (
     <main>
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-neutral-50 to-amber-50">
+      <section className="py-16 lg:py-24 bg-neutral-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
             Impressum

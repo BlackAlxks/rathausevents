@@ -154,7 +154,7 @@ export default function GaleriePage() {
 
   return (
     <main>
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-neutral-50 to-amber-50">
+      <section className="py-16 lg:py-24 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
             Einblicke in das Rathaus Friedrichshagen
@@ -177,9 +177,10 @@ export default function GaleriePage() {
                 onClick={() => setActiveCategory(category.id)}
                 className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
                   activeCategory === category.id
-                    ? 'bg-amber-700 text-white'
+                    ? 'text-white'
                     : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
                 }`}
+                style={activeCategory === category.id ? { backgroundColor: 'var(--color-primary)' } : {}}
               >
                 {category.label}
               </button>
@@ -236,7 +237,8 @@ export default function GaleriePage() {
             <Button
               variant="outline"
               size="lg"
-              className="border-amber-700 text-amber-700 hover:bg-amber-50 transition-all duration-200"
+              className="border-2 hover:opacity-80 transition-all duration-200"
+              style={{ borderColor: 'var(--color-primary)', color: 'var(--color-primary)' }}
             >
               <Download className="mr-2 h-4 w-4" />
               Infos als PDF herunterladen
@@ -244,7 +246,8 @@ export default function GaleriePage() {
             <Button
               asChild
               size="lg"
-              className="bg-amber-700 hover:bg-amber-800 transition-all duration-200 hover:shadow-lg"
+              className="hover:opacity-90 transition-all duration-200 hover:shadow-lg"
+              style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}
             >
               <Link href="/kontakt">
                 Event unverbindlich anfragen

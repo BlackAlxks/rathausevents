@@ -111,7 +111,7 @@ ${formData.freitext ? `Weitere Wünsche:\n${formData.freitext}` : ''}
 
   return (
     <main>
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-neutral-50 to-amber-50">
+      <section className="py-16 lg:py-24 bg-neutral-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">
             Kontakt und Anfrage
@@ -302,15 +302,15 @@ ${formData.freitext ? `Weitere Wünsche:\n${formData.freitext}` : ''}
                 </div>
 
                 <div className="space-y-3">
-                  <Label>Getränkepauschalen</Label>
+                  <Label>Getränkepauschalen (5 Stunden)</Label>
                   <p className="text-sm text-neutral-600">
-                    Alle Pauschalen können an dein Event angepasst werden
+                    Alle Pauschalen sind individuell anpassbar
                   </p>
                   <div className="space-y-2">
                     {[
-                      { value: 'pauschale-a', label: 'Pauschale A' },
-                      { value: 'pauschale-b', label: 'Pauschale B' },
-                      { value: 'pauschale-c', label: 'Pauschale C' },
+                      { value: 'basis', label: 'Basis (38,00 €)' },
+                      { value: 'volle-kanne', label: 'Volle Kanne (47,50 €)' },
+                      { value: 'doll-regional', label: 'Doll Regional (50,00 €)' },
                       { value: 'beratung', label: 'Beratung gewünscht' },
                     ].map((option) => (
                       <div
@@ -468,7 +468,8 @@ ${formData.freitext ? `Weitere Wünsche:\n${formData.freitext}` : ''}
               type="submit"
               size="lg"
               disabled={isSubmitting}
-              className="w-full bg-amber-700 hover:bg-amber-800 transition-all duration-200"
+              className="w-full hover:opacity-90 transition-all duration-200"
+              style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}
             >
               {isSubmitting ? 'Wird gesendet...' : 'Anfrage absenden'}
             </Button>
@@ -490,7 +491,7 @@ ${formData.freitext ? `Weitere Wünsche:\n${formData.freitext}` : ''}
           <div className="bg-white p-6 rounded-lg shadow-sm">
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <Mail className="h-5 w-5 text-amber-700 mt-0.5 flex-shrink-0" />
+                <Mail className="h-5 w-5 mt-0.5 flex-shrink-0" style={{ color: 'var(--color-primary)' }} />
                 <div>
                   <div className="font-medium text-neutral-900 mb-1">
                     Firmen- und Privatfeiern, Kultur und Konzerte, Drehs und
@@ -498,7 +499,8 @@ ${formData.freitext ? `Weitere Wünsche:\n${formData.freitext}` : ''}
                   </div>
                   <a
                     href="mailto:convention@brauerei-friedrichshagen.de"
-                    className="text-amber-700 hover:text-amber-800"
+                    className="hover:opacity-80"
+                    style={{ color: 'var(--color-primary)' }}
                   >
                     convention@brauerei-friedrichshagen.de
                   </a>
@@ -525,7 +527,7 @@ ${formData.freitext ? `Weitere Wünsche:\n${formData.freitext}` : ''}
 
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <Train className="h-5 w-5 text-amber-700 mt-0.5 flex-shrink-0" />
+                <Train className="h-5 w-5 mt-0.5 flex-shrink-0" style={{ color: 'var(--color-primary)' }} />
                 <div className="text-neutral-700">
                   <div className="font-medium mb-1">ÖPNV</div>
                   <p className="text-sm">
@@ -536,7 +538,7 @@ ${formData.freitext ? `Weitere Wünsche:\n${formData.freitext}` : ''}
               </div>
 
               <div className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-amber-700 mt-0.5 flex-shrink-0" />
+                <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0" style={{ color: 'var(--color-primary)' }} />
                 <div className="text-neutral-700">
                   <div className="font-medium mb-1">Mit dem Auto</div>
                   <p className="text-sm">

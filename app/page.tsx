@@ -58,24 +58,29 @@ const roomGalleries = {
 
 const packageHighlights = [
   {
-    title: 'Ganztagestagung',
-    price: 'ab 89€ pro Person',
-    features: ['Tagungsraum & Technik', 'Kaffeepausen', 'Mittagessen', 'Getränke ganztägig'],
+    title: 'Saisonales Buffet',
+    price: 'ab 48,00 € pro Person',
+    features: ['Vorspeisen, Suppe, Hauptgänge & Dessert', 'Fleisch, vegetarisch & vegan möglich', 'Saisonale & regionale Küche', 'ab 30 Personen'],
   },
   {
-    title: 'Weihnachtsfeier',
-    price: 'ab 79€ pro Person',
-    features: ['Raummiete inklusive', '3-Gang-Menü', 'Getränkepauschale', 'Weihnachtsdekoration'],
+    title: 'Kleine Vesper',
+    price: 'ab 30,00 € pro Person',
+    features: ['Kalte Braten & Gemüse', 'Brotauswahl', 'Zwei Eintöpfe (1x pflanzenbasiert)', 'Perfekt für kleinere Runden'],
   },
   {
-    title: 'Hochzeit',
-    price: 'individuell kalkuliert',
-    features: ['Exklusive Raumnutzung', 'Flexibles Catering', 'Persönliche Beratung', 'Dekoration & Technik'],
+    title: 'Getränkepauschale Basis',
+    price: '38,00 € (5 Stunden)',
+    features: ['Bier, Wein & Softgetränks', 'Kaffeespezialitäten & Tee', 'Klassische Auswahl', 'Unbegrenzte Getränke'],
   },
   {
-    title: 'Sommerfest',
-    price: 'ab 65€ pro Person',
-    features: ['Innenhof-Nutzung', 'BBQ oder Buffet', 'Getränke & Service', 'Outdoor-Equipment'],
+    title: 'Getränkepauschale Volle Kanne',
+    price: '47,50 € (5 Stunden)',
+    features: ['Bier, Wein, Prosecco', 'Softgetränke & Säfte', 'Longdrinks', 'Premium-Auswahl'],
+  },
+  {
+    title: 'Getränkepauschale Doll Regional',
+    price: '50,00 € (5 Stunden)',
+    features: ['Regionale Biere & Weine', 'Prosecco & Longdrinks', 'Berliner Spezialitäten', 'Exklusive Auswahl'],
   },
 ];
 
@@ -120,7 +125,7 @@ export default function Home() {
               Pauschalen-Übersicht
             </h3>
             <p className="text-neutral-700 mb-6">
-              Hier finden Sie eine Auswahl unserer beliebtesten Veranstaltungspauschalen. Alle Angebote sind individuell anpassbar.
+              Unsere Buffet- und Getränkepauschalen können individuell kombiniert und an Ihre Veranstaltung angepasst werden.
             </p>
             <div className="grid sm:grid-cols-2 gap-4">
               {packageHighlights.map((pkg, idx) => (
@@ -168,7 +173,7 @@ export default function Home() {
                 </Button>
               </Link>
               <Link href="/galerie">
-                <Button size="lg" variant="outline" className="bg-white/90 hover:bg-white border-white">
+                <Button size="lg" variant="outline" className="bg-white text-black border-2 hover:text-black" style={{ borderColor: 'var(--color-primary)' }} onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-sand)')} onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'white')}>
                   <Camera className="mr-2 h-5 w-5" />
                   Zur Galerie
                 </Button>
@@ -193,10 +198,7 @@ export default function Home() {
                   Unsere flexiblen Räumlichkeiten lassen sich individuell kombinieren und auf Ihre Bedürfnisse abstimmen. Von intimen Zusammenkünften mit 10 Personen bis zu großen Feiern mit bis zu 200 Gästen passen wir die Raumkonfiguration genau an Ihr Event an.
                 </p>
                 <p>
-                  Mit unserem professionellen Eventmanagement und erfahrenen Servicepersonal begleiten wir Sie von der ersten Planung bis zur erfolgreichen Durchführung. Wir entwickeln maßgeschneiderte Eventpakete, die exakt auf Ihre Vorstellungen und Ihr Budget zugeschnitten sind.
-                </p>
-                <p>
-                  Das denkmalgeschützte Gebäude vereint historisches Ambiente mit moderner Veranstaltungstechnik – eine einzigartige Atmosphäre, die Ihre Gäste begeistern wird.
+                  Mit unserem professionellen Eventmanagement begleiten wir Sie von der ersten Planung bis zur erfolgreichen Durchführung. Wir entwickeln maßgeschneiderte Eventpakete, die auf Ihre Vorstellungen zugeschnitten sind.
                 </p>
               </div>
             </div>
@@ -542,14 +544,14 @@ export default function Home() {
               Pauschalen & Preise
             </h2>
             <p className="text-lg text-neutral-600">
-              Transparente Angebote für verschiedene Veranstaltungsformate. Alle Pauschalen sind individuell anpassbar.
+              Unsere Pauschalen basieren auf erprobten Buffet- und Getränkekonzepten und können individuell an Ihre Veranstaltung angepasst werden.
             </p>
           </div>
 
           <div className="relative mb-8 p-6 bg-white rounded-lg shadow-sm">
             <div className="flex items-start gap-4">
               <div className="flex-1">
-                <h3 className="text-xl font-bold text-neutral-900 mb-3">Beispiel-Pauschalen im Überblick</h3>
+                <h3 className="text-xl font-bold text-neutral-900 mb-3">Pauschalen im Überblick</h3>
                 <div className="relative overflow-hidden" suppressHydrationWarning>
                   <div className="transition-all duration-500 ease-in-out">
                     <div className="border border-neutral-200 rounded-lg p-5">
@@ -695,18 +697,18 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/kontakt">
-              <Button size="lg" className="bg-white hover:bg-neutral-100" style={{ color: 'var(--color-primary)' }}>
+              <Button size="lg" className="bg-white text-black hover:opacity-90" style={{ color: 'var(--color-primary)' }}>
                 Kontaktformular
               </Button>
             </Link>
             <a href="tel:01624533204">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+              <Button size="lg" className="bg-white text-black hover:opacity-90" style={{ color: 'var(--color-primary)' }}>
                 <Phone className="mr-2 h-5 w-5" />
                 Anrufen
               </Button>
             </a>
             <a href="mailto:convention@brauerei-friedrichshagen.de">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+              <Button size="lg" className="bg-white text-black hover:opacity-90" style={{ color: 'var(--color-primary)' }}>
                 <Mail className="mr-2 h-5 w-5" />
                 E-Mail schreiben
               </Button>
