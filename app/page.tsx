@@ -21,10 +21,6 @@ import {
   ArrowRight,
   Phone,
   Mail,
-  Info,
-  X,
-  ChevronLeft,
-  ChevronRight,
 } from 'lucide-react';
 
 const roomGalleries = {
@@ -34,9 +30,6 @@ const roomGalleries = {
     { src: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-13.webp', alt: 'Festlich gedeckte Tafel im Alten Ratssaal' },
     { src: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-22.webp', alt: 'Trauung im Alten Ratssaal' },
     { src: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-27.webp', alt: 'Hochzeitsfeier im Alten Ratssaal' },
-    { src: '/images/Party/Party_55A6675.webp', alt: 'Party im Ratssaal' },
-    { src: '/images/Party/Party_55A7097.webp', alt: 'Event im Saal' },
-    { src: '/images/Party/Party_55A6677.webp', alt: 'Konzert im Ratssaal' },
   ],
   ratskeller: [
     { src: '/images/Ratskeller/Ratskeller__55A1776.webp', alt: 'Ratskeller Gewölbe' },
@@ -48,6 +41,9 @@ const roomGalleries = {
     { src: '/images/Ratskeller/Ratskeller_gaeste.webp', alt: 'Ratskeller Gäste' },
     { src: '/images/Ratskeller/Ratskeller_gaeste3.webp', alt: 'Ratskeller Event' },
     { src: '/images/Ratskeller/Ratskeller_BGW_DollerAbend130622_FH-7251.webp', alt: 'Besonderer Abend im Ratskeller' },
+    { src: '/images/Party/Party_55A6675.webp', alt: 'Party im Ratskeller' },
+    { src: '/images/Party/Party_55A7097.webp', alt: 'Event im Ratskeller' },
+    { src: '/images/Party/Party_55A6677.webp', alt: 'Konzert im Ratskeller' },
   ],
   hoftheke: [
     { src: '/images/Hoftheke/Hoftheke_55A8738-Pano.webp', alt: 'Hoftheke Panorama' },
@@ -65,58 +61,15 @@ const roomGalleries = {
     { src: '/images/Bürgermeisterzimmer/Bürgermeisterzimmer_IMG_0292.webp', alt: 'Bürgermeisterzimmer Detail' },
     { src: '/images/Bürgermeisterzimmer/Bürgermeisterzimmer_IMG_0294.webp', alt: 'Bürgermeisterzimmer Salon' },
   ],
-  lounge: [
-    { src: '/images/Lounge/2025-04 Lounge .webp', alt: 'Lounge-Bereich' },
-    { src: '/images/Allgemein/General_20160615-IMG_0117.webp', alt: 'Rathaus Impression' },
-    { src: '/images/Allgemein/General_20160615-IMG_0127.webp', alt: 'Rathaus Detail' },
-  ],
 };
-
-const packageHighlights = [
-  {
-    title: 'Saisonales Buffet',
-    price: 'ab 48,00 € pro Person',
-    features: ['Vorspeisen, Suppe, Hauptgänge & Dessert', 'Fleisch, vegetarisch & vegan möglich', 'Saisonale & regionale Küche', 'ab 30 Personen'],
-  },
-  {
-    title: 'Kleine Vesper',
-    price: 'ab 30,00 € pro Person',
-    features: ['Kalte Braten & Gemüse', 'Brotauswahl', 'Zwei Eintöpfe (1x pflanzenbasiert)', 'Perfekt für kleinere Runden'],
-  },
-  {
-    title: 'Getränkepauschale Basis',
-    price: '38,00 € (5 Stunden)',
-    features: ['Bier, Wein & Softgetränks', 'Kaffeespezialitäten & Tee', 'Klassische Auswahl', 'Unbegrenzte Getränke'],
-  },
-  {
-    title: 'Getränkepauschale Volle Kanne',
-    price: '47,50 € (5 Stunden)',
-    features: ['Bier, Wein, Prosecco', 'Softgetränke & Säfte', 'Longdrinks', 'Premium-Auswahl'],
-  },
-  {
-    title: 'Getränkepauschale Doll Regional',
-    price: '50,00 € (5 Stunden)',
-    features: ['Regionale Biere & Weine', 'Prosecco & Longdrinks', 'Berliner Spezialitäten', 'Exklusive Auswahl'],
-  },
-];
 
 export default function Home() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentGallery, setCurrentGallery] = useState<keyof typeof roomGalleries>('ratssaal');
-  const [packageModalOpen, setPackageModalOpen] = useState(false);
-  const [currentPackage, setCurrentPackage] = useState(0);
 
   const openLightbox = (room: keyof typeof roomGalleries) => {
     setCurrentGallery(room);
     setLightboxOpen(true);
-  };
-
-  const nextPackage = () => {
-    setCurrentPackage((prev) => (prev + 1) % packageHighlights.length);
-  };
-
-  const prevPackage = () => {
-    setCurrentPackage((prev) => (prev === 0 ? packageHighlights.length - 1 : prev - 1));
   };
 
   return (
@@ -127,49 +80,6 @@ export default function Home() {
         onClose={() => setLightboxOpen(false)}
         showFoodNotice={currentGallery === 'ratskeller'}
       />
-
-      {packageModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-2xl w-full p-8 relative">
-            <button
-              onClick={() => setPackageModalOpen(false)}
-              className="absolute top-4 right-4 text-neutral-500 hover:text-neutral-900"
-            >
-              <X className="w-6 h-6" />
-            </button>
-            <h3 className="text-2xl font-bold text-neutral-900 mb-6">
-              Pauschalen-Übersicht
-            </h3>
-            <p className="text-neutral-700 mb-6">
-              Unsere Buffet- und Getränkepauschalen können individuell kombiniert und an Ihre Veranstaltung angepasst werden.
-            </p>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {packageHighlights.map((pkg, idx) => (
-                <div
-                  key={idx}
-                  className="border border-neutral-200 rounded-lg p-4 hover:border-brand-accent transition-colors"
-                >
-                  <h4 className="font-bold text-neutral-900 mb-2">{pkg.title}</h4>
-                  <p className="text-brand-primary font-semibold mb-3">{pkg.price}</p>
-                  <ul className="space-y-1 text-sm text-neutral-700">
-                    {pkg.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-brand-accent flex-shrink-0 mt-0.5" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-            <div className="mt-6 p-4 bg-neutral-50 rounded-lg">
-              <p className="text-sm text-neutral-700">
-                Die vollständigen Pauschalen mit allen Details finden Sie in den PDF-Dokumenten zum Download.
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
 
       <section className="relative">
         <HeroSlideshow />
@@ -427,34 +337,6 @@ export default function Home() {
                 </p>
               </div>
             </div>
-
-            <div
-              onClick={() => openLightbox('lounge')}
-              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
-            >
-              <div className="relative aspect-video">
-                <SmartImage
-                  src="/images/Lounge/2025-04 Lounge .webp"
-                  alt="Moderne Lounge im Rathaus mit entspannter Atmosphäre"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-neutral-900 mb-2">
-                  Lounge
-                </h3>
-                <p className="text-sm mb-3" style={{ color: 'var(--color-primary)' }}>
-                  Entspannter Empfangsbereich
-                </p>
-                <p className="text-neutral-700 leading-relaxed">
-                  Moderne Lounge-Atmosphäre für Empfänge, Networking-Events
-                  oder als gemütlicher Rückzugsort bei größeren Veranstaltungen.
-                  Ideal für lockere Zusammenkünfte.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -463,7 +345,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
-              Von der Idee zum fertigen Event
+              In vier Schritten von der Idee zum fertigen Event
             </h2>
             <p className="text-lg text-neutral-600">
               Wir begleiten Sie durch den gesamten Planungsprozess – mit persönlicher Beratung und professioneller Umsetzung.
@@ -628,67 +510,105 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="relative mb-8 p-6 bg-white rounded-lg shadow-sm">
-            <div className="flex items-start gap-4">
-              <div className="flex-1">
-                <h3 className="text-xl font-bold text-neutral-900 mb-3">Pauschalen im Überblick</h3>
-                <div className="relative overflow-hidden" suppressHydrationWarning>
-                  <div className="transition-all duration-500 ease-in-out">
-                    <div className="border border-neutral-200 rounded-lg p-5">
-                      <div className="flex justify-between items-start mb-3">
-                        <h4 className="text-lg font-bold text-neutral-900">{packageHighlights[currentPackage].title}</h4>
-                        <span className="font-semibold" style={{ color: 'var(--color-primary)' }}>{packageHighlights[currentPackage].price}</span>
-                      </div>
-                      <ul className="space-y-2">
-                        {packageHighlights[currentPackage].features.map((feature, i) => (
-                          <li key={i} className="flex items-start gap-2 text-neutral-700">
-                            <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+          <div className="grid md:grid-cols-2 gap-8 mb-8">
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <h3 className="text-xl font-bold text-neutral-900 mb-6">Essenspauschalen</h3>
+              <div className="space-y-4">
+                <div className="border border-neutral-200 rounded-lg p-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="font-bold text-neutral-900">Saisonales Buffet</h4>
+                    <span className="font-semibold text-sm" style={{ color: 'var(--color-primary)' }}>ab 48,00 € p.P.</span>
                   </div>
-                  <div className="flex items-center justify-between mt-4" suppressHydrationWarning>
-                    <button
-                      onClick={prevPackage}
-                      className="p-2 rounded-full border border-neutral-300 hover:bg-neutral-50 transition-colors"
-                      aria-label="Vorherige Pauschale"
-                    >
-                      <ChevronLeft className="w-5 h-5" />
-                    </button>
-                    <div className="flex gap-2">
-                      {packageHighlights.map((_, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => setCurrentPackage(idx)}
-                          className={`w-2 h-2 rounded-full transition-all ${
-                            idx === currentPackage ? 'w-6' : ''
-                          }`}
-                          style={{
-                            backgroundColor: idx === currentPackage ? 'var(--color-primary)' : 'var(--color-sand)'
-                          }}
-                          aria-label={`Pauschale ${idx + 1}`}
-                        />
-                      ))}
-                    </div>
-                    <button
-                      onClick={nextPackage}
-                      className="p-2 rounded-full border border-neutral-300 hover:bg-neutral-50 transition-colors"
-                      aria-label="Nächste Pauschale"
-                    >
-                      <ChevronRight className="w-5 h-5" />
-                    </button>
+                  <ul className="space-y-1 text-sm text-neutral-700">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
+                      Vorspeisen, Suppe, Hauptgänge & Dessert
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
+                      Fleisch, vegetarisch & vegan möglich
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
+                      Saisonale & regionale Küche
+                    </li>
+                  </ul>
+                </div>
+                <div className="border border-neutral-200 rounded-lg p-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="font-bold text-neutral-900">Kleine Vesper</h4>
+                    <span className="font-semibold text-sm" style={{ color: 'var(--color-primary)' }}>ab 30,00 € p.P.</span>
                   </div>
+                  <ul className="space-y-1 text-sm text-neutral-700">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
+                      Kalte Braten & Gemüse
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
+                      Brotauswahl & zwei Eintöpfe
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
+                      Perfekt für kleinere Runden
+                    </li>
+                  </ul>
                 </div>
               </div>
-              <button
-                onClick={() => setPackageModalOpen(true)}
-                className="flex-shrink-0 p-2 rounded-full hover:bg-neutral-100 transition-colors"
-                aria-label="Alle Pauschalen anzeigen"
-              >
-                <Info className="w-6 h-6" style={{ color: 'var(--color-primary)' }} />
-              </button>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <h3 className="text-xl font-bold text-neutral-900 mb-6">Getränkepauschalen (je 5 Stunden)</h3>
+              <div className="space-y-4">
+                <div className="border border-neutral-200 rounded-lg p-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="font-bold text-neutral-900">Getränkepauschale Basis</h4>
+                    <span className="font-semibold text-sm" style={{ color: 'var(--color-primary)' }}>38,00 € p.P.</span>
+                  </div>
+                  <ul className="space-y-1 text-sm text-neutral-700">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
+                      Bier, Wein & Softgetränke
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
+                      Kaffeespezialitäten & Tee
+                    </li>
+                  </ul>
+                </div>
+                <div className="border border-neutral-200 rounded-lg p-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="font-bold text-neutral-900">Getränkepauschale Volle Kanne</h4>
+                    <span className="font-semibold text-sm" style={{ color: 'var(--color-primary)' }}>47,50 € p.P.</span>
+                  </div>
+                  <ul className="space-y-1 text-sm text-neutral-700">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
+                      Bier, Wein, Prosecco & Softgetränke
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
+                      Longdrinks & Premium-Auswahl
+                    </li>
+                  </ul>
+                </div>
+                <div className="border border-neutral-200 rounded-lg p-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="font-bold text-neutral-900">Getränkepauschale Doll Regional</h4>
+                    <span className="font-semibold text-sm" style={{ color: 'var(--color-primary)' }}>50,00 € p.P.</span>
+                  </div>
+                  <ul className="space-y-1 text-sm text-neutral-700">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
+                      Regionale Biere & Weine
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
+                      Berliner Spezialitäten & Longdrinks
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -707,7 +627,7 @@ export default function Home() {
               >
                 <Button style={{ backgroundColor: 'var(--color-primary)', color: 'white' }} className="hover:opacity-90">
                   <Download className="mr-2 h-4 w-4" />
-                  Pauschalen-Übersicht (PDF)
+                  Informationen & Pauschalen (PDF)
                 </Button>
               </a>
             </div>
@@ -829,28 +749,15 @@ export default function Home() {
                 außerdem steht ein barrierefreies WC zur Verfügung.
               </p>
             </div>
-            <div className="space-y-4">
-              <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300">
-                <div className="relative w-full aspect-square">
-                  <SmartImage
-                    src="/images/map/makrolage.webp"
-                    alt="Makrolage Berlin Friedrichshagen"
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-contain rounded"
-                  />
-                </div>
-              </div>
-              <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300">
-                <div className="relative w-full aspect-square">
-                  <SmartImage
-                    src="/images/map/mikrolage.webp"
-                    alt="Mikrolage Rathaus Friedrichshagen"
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-contain rounded"
-                  />
-                </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300">
+              <div className="relative w-full aspect-square">
+                <SmartImage
+                  src="/images/map/makrolage.webp"
+                  alt="Makrolage Berlin Friedrichshagen"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-contain rounded"
+                />
               </div>
             </div>
           </div>
