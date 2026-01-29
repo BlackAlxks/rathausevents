@@ -183,13 +183,49 @@ export default function Home() {
             </p>
             <div className="flex flex-wrap gap-4 justify-center pointer-events-auto">
               <Link href="/kontakt">
-                <Button size="lg" style={{ backgroundColor: 'var(--color-primary)', color: 'white' }} className="hover:opacity-90 transition-opacity">
+                <Button
+                  size="lg"
+                  style={{
+                    backgroundColor: 'var(--color-primary)',
+                    color: 'white',
+                    borderWidth: '2px',
+                    borderColor: 'var(--color-primary)',
+                    borderStyle: 'solid'
+                  }}
+                  className="transition-all duration-300"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                    e.currentTarget.style.color = 'white';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'var(--color-primary)';
+                    e.currentTarget.style.color = 'white';
+                  }}
+                >
                   Jetzt anfragen
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link href="/galerie">
-                <Button size="lg" variant="outline" className="bg-white text-black border-2 hover:text-black" style={{ borderColor: 'var(--color-primary)' }} onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-sand)')} onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'white')}>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-white border-2 transition-all duration-300"
+                  style={{
+                    borderColor: 'var(--color-primary)',
+                    color: 'var(--color-primary)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                    e.currentTarget.style.borderColor = 'white';
+                    e.currentTarget.style.color = 'var(--color-primary)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'white';
+                    e.currentTarget.style.borderColor = 'var(--color-primary)';
+                    e.currentTarget.style.color = 'var(--color-primary)';
+                  }}
+                >
                   <Camera className="mr-2 h-5 w-5" />
                   Zur Galerie
                 </Button>
