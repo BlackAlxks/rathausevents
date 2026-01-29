@@ -29,30 +29,46 @@ import {
 
 const roomGalleries = {
   ratssaal: [
+    { src: '/images/Ratssaal/IMG_9209.webp', alt: 'Alter Ratssaal mit Stuck' },
+    { src: '/images/Ratssaal/IMG_9402.webp', alt: 'Ratssaal Detail' },
     { src: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-13.webp', alt: 'Festlich gedeckte Tafel im Alten Ratssaal' },
     { src: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-22.webp', alt: 'Trauung im Alten Ratssaal' },
     { src: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-27.webp', alt: 'Hochzeitsfeier im Alten Ratssaal' },
     { src: '/images/Party/Party_55A6675.webp', alt: 'Party im Ratssaal' },
     { src: '/images/Party/Party_55A7097.webp', alt: 'Event im Saal' },
+    { src: '/images/Party/Party_55A6677.webp', alt: 'Konzert im Ratssaal' },
   ],
   ratskeller: [
     { src: '/images/Ratskeller/Ratskeller__55A1776.webp', alt: 'Ratskeller Gewölbe' },
     { src: '/images/Ratskeller/Ratskeller__55A1262.webp', alt: 'Ratskeller Hauptraum' },
     { src: '/images/Ratskeller/Ratskeller__55A1842.webp', alt: 'Ratskeller Feier' },
     { src: '/images/Ratskeller/Ratskeller__55A1859.webp', alt: 'Ratskeller Bar' },
+    { src: '/images/Ratskeller/Ratskeller__55A9957.webp', alt: 'Ratskeller Atmosphäre' },
+    { src: '/images/Ratskeller/Ratskeller_Keller.webp', alt: 'Ratskeller Gewölbekeller' },
     { src: '/images/Ratskeller/Ratskeller_gaeste.webp', alt: 'Ratskeller Gäste' },
     { src: '/images/Ratskeller/Ratskeller_gaeste3.webp', alt: 'Ratskeller Event' },
+    { src: '/images/Ratskeller/Ratskeller_BGW_DollerAbend130622_FH-7251.webp', alt: 'Besonderer Abend im Ratskeller' },
   ],
   hoftheke: [
-    { src: '/images/Hoftheke/Hoftheke_55A8729-Panorama.webp', alt: 'Hoftheke Panorama' },
+    { src: '/images/Hoftheke/Hoftheke_55A8738-Pano.webp', alt: 'Hoftheke Panorama' },
+    { src: '/images/Hoftheke/Hoftheke_55A8821-Pano.webp', alt: 'Hoftheke Weitwinkel' },
+    { src: '/images/Hoftheke/Hoftheke_XX!_55A9788-Panorama.webp', alt: 'Hoftheke 360°' },
     { src: '/images/Hoftheke/Hoftheke_555A7081.webp', alt: 'Hoftheke' },
     { src: '/images/Hoftheke/Hoftheke_55A9612.webp', alt: 'Hoftheke Innenraum' },
     { src: '/images/Hoftheke/Hoftheke_55A9885.webp', alt: 'Hoftheke Sommerfest' },
+    { src: '/images/Hoftheke/Hoftheke_Hoftheke Rustikal.webp', alt: 'Hoftheke Rustikal' },
+    { src: '/images/Hoftheke/Hoftheke_Hoftheke3.webp', alt: 'Hoftheke Ambiente' },
+    { src: '/images/Hoftheke/Hoftheke_03.webp', alt: 'Hoftheke Detail' },
   ],
   buergermeisterzimmer: [
     { src: '/images/Bürgermeisterzimmer/Bürgermeisterzimmer_20160615-IMG_0361.webp', alt: 'Historisches Bürgermeisterzimmer' },
     { src: '/images/Bürgermeisterzimmer/Bürgermeisterzimmer_IMG_0292.webp', alt: 'Bürgermeisterzimmer Detail' },
     { src: '/images/Bürgermeisterzimmer/Bürgermeisterzimmer_IMG_0294.webp', alt: 'Bürgermeisterzimmer Salon' },
+  ],
+  lounge: [
+    { src: '/images/Lounge/2025-04 Lounge .webp', alt: 'Lounge-Bereich' },
+    { src: '/images/Allgemein/General_20160615-IMG_0117.webp', alt: 'Rathaus Impression' },
+    { src: '/images/Allgemein/General_20160615-IMG_0127.webp', alt: 'Rathaus Detail' },
   ],
 };
 
@@ -326,7 +342,7 @@ export default function Home() {
             >
               <div className="relative aspect-video">
                 <SmartImage
-                  src="/images/Hoftheke/Hoftheke_55A8729-Panorama.webp"
+                  src="/images/Hoftheke/Hoftheke_55A8738-Pano.webp"
                   alt="Panoramaaufnahme der Hoftheke mit angrenzendem Innenhof"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -372,6 +388,34 @@ export default function Home() {
                   Historisches Ambiente mit Holzvertäfelung und klassischem
                   Mobiliar. Perfekt für kleine Empfänge, Besprechungen oder
                   standesamtliche Trauungen bis zu 30 Personen.
+                </p>
+              </div>
+            </div>
+
+            <div
+              onClick={() => openLightbox('lounge')}
+              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+            >
+              <div className="relative aspect-video">
+                <SmartImage
+                  src="/images/Lounge/2025-04 Lounge .webp"
+                  alt="Moderne Lounge im Rathaus mit entspannter Atmosphäre"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-neutral-900 mb-2">
+                  Lounge
+                </h3>
+                <p className="text-sm mb-3" style={{ color: 'var(--color-primary)' }}>
+                  Entspannter Empfangsbereich
+                </p>
+                <p className="text-neutral-700 leading-relaxed">
+                  Moderne Lounge-Atmosphäre für Empfänge, Networking-Events
+                  oder als gemütlicher Rückzugsort bei größeren Veranstaltungen.
+                  Ideal für lockere Zusammenkünfte.
                 </p>
               </div>
             </div>
@@ -672,15 +716,28 @@ export default function Home() {
                 außerdem steht ein barrierefreies WC zur Verfügung.
               </p>
             </div>
-            <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300">
-              <div className="relative w-full aspect-square">
-                <SmartImage
-                  src="/images/map/makrolage.webp"
-                  alt="Makrolage Berlin Friedrichshagen"
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-contain rounded"
-                />
+            <div className="space-y-4">
+              <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300">
+                <div className="relative w-full aspect-square">
+                  <SmartImage
+                    src="/images/map/makrolage.webp"
+                    alt="Makrolage Berlin Friedrichshagen"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-contain rounded"
+                  />
+                </div>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300">
+                <div className="relative w-full aspect-square">
+                  <SmartImage
+                    src="/images/map/mikrolage.webp"
+                    alt="Mikrolage Rathaus Friedrichshagen"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-contain rounded"
+                  />
+                </div>
               </div>
             </div>
           </div>

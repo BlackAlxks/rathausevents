@@ -10,6 +10,10 @@ const heroSlides = [
     alt: 'Festlich gedeckte Tafel im Alten Ratssaal',
   },
   {
+    src: '/images/Ratssaal/IMG_9209.webp',
+    alt: 'Alter Ratssaal mit Stuck und hohen Decken',
+  },
+  {
     src: '/images/Ratskeller/Ratskeller__55A1776.webp',
     alt: 'Ratskeller mit gedeckten Tischen',
   },
@@ -18,12 +22,20 @@ const heroSlides = [
     alt: 'Party im Rathaus',
   },
   {
-    src: '/images/Hoftheke/Hoftheke_55A9612.webp',
-    alt: 'Hoftheke Innenraum',
+    src: '/images/Hoftheke/Hoftheke_55A8738-Pano.webp',
+    alt: 'Hoftheke Panorama',
+  },
+  {
+    src: '/images/Weihnachtsfeier/Weihnachtsfeier2022.12.16. - Weihnachten_Rathaus FH©pctrbrln.com-14.webp',
+    alt: 'Weihnachtsfeier im Rathaus',
   },
   {
     src: '/images/Außenansicht/Outside_rathaus_outside_view.webp',
     alt: 'Außenansicht des historischen Rathauses',
+  },
+  {
+    src: '/images/Lounge/2025-04 Lounge .webp',
+    alt: 'Moderne Lounge im Rathaus',
   },
 ];
 
