@@ -727,14 +727,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-12 lg:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-6">
+              <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
                 Lage & Anfahrt
               </h2>
-              <p className="text-lg text-neutral-700 leading-relaxed mb-4">
+              <p className="text-lg text-neutral-700 leading-relaxed mb-3">
                 Das Rathaus Friedrichshagen liegt an der Bölschestr. 87/88 im
                 Berliner Südosten, in einem lebendigen Stadtteil mit viel
                 Geschichte, Gastronomie und Nähe zum Müggelsee. Ihre Gäste
@@ -749,8 +749,8 @@ export default function Home() {
                 außerdem steht ein barrierefreies WC zur Verfügung.
               </p>
             </div>
-            <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300">
-              <div className="relative w-full aspect-square">
+            <div className="bg-white p-3 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300">
+              <div className="relative w-full aspect-[4/3]">
                 <SmartImage
                   src="/images/map/makrolage.webp"
                   alt="Makrolage Berlin Friedrichshagen"
