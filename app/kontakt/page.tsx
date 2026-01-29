@@ -274,7 +274,7 @@ ${formData.freitext ? `Weitere Wünsche:\n${formData.freitext}` : ''}
                   <div className="space-y-2">
                     {[
                       { value: 'empfang', label: 'Empfang' },
-                      { value: 'menue', label: 'Menü' },
+                      { value: 'menue', label: 'Menü (max. 20 Personen)' },
                       { value: 'buffet', label: 'Buffet' },
                       { value: 'fingerfood', label: 'Fingerfood' },
                       { value: 'unsicher', label: 'Noch unsicher' },
@@ -339,13 +339,10 @@ ${formData.freitext ? `Weitere Wünsche:\n${formData.freitext}` : ''}
                   <Label>Technik</Label>
                   <div className="space-y-2">
                     {[
-                      {
-                        value: 'tonanlage',
-                        label: 'Tonanlage oder Mikrofon',
-                      },
+                      { value: 'tonanlage', label: 'Tonanlage' },
+                      { value: 'mikrofon', label: 'Mikrofon' },
                       { value: 'buehne', label: 'Bühne oder Podium' },
-                      { value: 'beamer', label: 'Beamer oder Leinwand' },
-                      { value: 'licht', label: 'Licht' },
+                      { value: 'beamer', label: 'Bildschirm / Beamer und Leinwand' },
                       { value: 'sonstiges', label: 'Sonstiges' },
                     ].map((option) => (
                       <div
