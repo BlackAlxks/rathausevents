@@ -730,6 +730,83 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="py-16 lg:py-24 bg-neutral-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
+              Persönliche Ansprechpartner
+            </h2>
+            <p className="text-lg text-neutral-700 max-w-3xl mx-auto">
+              Haben Sie Fragen oder möchten Sie Ihr Vorhaben persönlich besprechen? Unsere Eventmanager stehen Ihnen gerne zur Verfügung.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-20 h-20 rounded-full mb-4 flex items-center justify-center text-white text-2xl font-bold" style={{ backgroundColor: 'var(--color-primary)' }}>
+                  SK
+                </div>
+                <h3 className="text-xl font-bold text-neutral-900 mb-2">
+                  Samantha Krebs
+                </h3>
+                <p className="text-neutral-600 mb-6">
+                  Firmen- / Privatfeier & Drehort
+                </p>
+                <div className="space-y-3 w-full">
+                  <a
+                    href="tel:01624533204"
+                    className="flex items-center justify-center gap-2 text-neutral-700 hover:opacity-80 transition-opacity"
+                  >
+                    <Phone className="h-4 w-4" style={{ color: 'var(--color-primary)' }} />
+                    <span>0162 - 4533204</span>
+                  </a>
+                  <a
+                    href="mailto:convention@brauerei-friedrichshagen.de"
+                    className="flex items-center justify-center gap-2 hover:opacity-80 transition-opacity break-all"
+                    style={{ color: 'var(--color-primary)' }}
+                  >
+                    <Mail className="h-4 w-4 flex-shrink-0" />
+                    <span className="text-sm">convention@brauerei-friedrichshagen.de</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-20 h-20 rounded-full mb-4 flex items-center justify-center text-white text-2xl font-bold" style={{ backgroundColor: 'var(--color-primary)' }}>
+                  RB
+                </div>
+                <h3 className="text-xl font-bold text-neutral-900 mb-2">
+                  René Baruth
+                </h3>
+                <p className="text-neutral-600 mb-6">
+                  Firmen- und Privatfeier
+                </p>
+                <div className="space-y-3 w-full">
+                  <a
+                    href="tel:01624533204"
+                    className="flex items-center justify-center gap-2 text-neutral-700 hover:opacity-80 transition-opacity"
+                  >
+                    <Phone className="h-4 w-4" style={{ color: 'var(--color-primary)' }} />
+                    <span>0162 - 4533204</span>
+                  </a>
+                  <a
+                    href="mailto:bankett@rathaus-events.de"
+                    className="flex items-center justify-center gap-2 hover:opacity-80 transition-opacity"
+                    style={{ color: 'var(--color-primary)' }}
+                  >
+                    <Mail className="h-4 w-4 flex-shrink-0" />
+                    <span>bankett@rathaus-events.de</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
