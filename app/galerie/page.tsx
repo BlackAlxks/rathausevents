@@ -12,6 +12,7 @@ const categories = [
   { id: 'hochzeiten', label: 'Hochzeiten & Feiern' },
   { id: 'firmenfeiern', label: 'Firmenevents' },
   { id: 'kultur', label: 'Partys & Konzerte' },
+  { id: 'produktionen', label: 'Produktionen & Shootings' },
   { id: 'essen-trinken', label: 'Essen & Trinken' },
 ];
 
@@ -288,6 +289,20 @@ const galleryItems = [
     title: 'Rathaus Detail',
     description: 'Einzigartige Atmosphäre für Ihre Veranstaltung',
     image: '/images/Allgemein/General_20160615-IMG_0127.webp',
+  },
+  {
+    id: 40,
+    category: 'produktionen',
+    title: 'Fotoshooting im Rathaus Friedrichshagen',
+    description: 'Professionelle Fotoproduktionen im historischen Ambiente',
+    image: '/images/Shootings/Shooting1.webp',
+  },
+  {
+    id: 41,
+    category: 'produktionen',
+    title: 'Musikvideo Produktion im Rathaus Friedrichshagen',
+    description: 'Kreative Videoproduktionen in einzigartiger Kulisse',
+    image: '/images/Shootings/Shooting2.webp',
   },
 ];
 
