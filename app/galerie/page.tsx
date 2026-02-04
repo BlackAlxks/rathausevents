@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Download, ArrowRight } from 'lucide-react';
+import { Download, ArrowRight, Play } from 'lucide-react';
 import Link from 'next/link';
 import { SmartImage } from '@/components/smart-image';
 import { useState } from 'react';
@@ -303,6 +303,7 @@ const galleryItems = [
     title: 'Musikvideo Produktion im Rathaus Friedrichshagen',
     description: 'Kreative Videoproduktionen in einzigartiger Kulisse',
     image: '/images/Shootings/Shooting2.webp',
+    videoUrl: 'https://youtu.be/0AXeDwItkyM?si=R7EU5cLkUSgsOpv7',
   },
 ];
 
@@ -376,6 +377,19 @@ export default function GaleriePage() {
                   <p className="text-sm text-neutral-600 leading-relaxed">
                     {item.description}
                   </p>
+                  {'videoUrl' in item && item.videoUrl && (
+                    <a
+                      href={item.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 mt-4 px-4 py-2 text-sm font-medium text-white rounded-full transition-all duration-200 hover:opacity-90 hover:shadow-md"
+                      style={{ backgroundColor: 'var(--color-primary)' }}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Play className="h-4 w-4" />
+                      Video ansehen
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
