@@ -12,13 +12,20 @@ const fbImages = [
 
 export function FoodBeverageSlideshow() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev === fbImages.length - 1 ? 0 : prev + 1));
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [mounted]);
 
   const handlePrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? fbImages.length - 1 : prev - 1));

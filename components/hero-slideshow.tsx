@@ -30,16 +30,21 @@ const heroSlides = [
 export function HeroSlideshow() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isAutoPlaying || !mounted) return;
 
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, mounted]);
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
