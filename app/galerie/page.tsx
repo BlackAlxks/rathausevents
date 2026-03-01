@@ -179,13 +179,6 @@ const galleryItems = [
     image: '/images/Hoftheke/Hoftheke_03.webp',
   },
   {
-    id: 24,
-    category: 'raeume',
-    title: 'Lounge-Bereich',
-    description: 'Entspannte Lounge-Atmosphäre für Empfänge',
-    image: '/images/Lounge/2025-04 Lounge .webp',
-  },
-  {
     id: 25,
     category: 'hochzeiten',
     title: 'Hochzeit im Ratssaal',
@@ -305,6 +298,48 @@ const galleryItems = [
     image: '/images/Shootings/Shooting2.webp',
     videoUrl: 'https://youtu.be/0AXeDwItkyM?si=R7EU5cLkUSgsOpv7',
   },
+  {
+    id: 42,
+    category: 'essen-trinken',
+    title: 'Ratskeller Kerzenleuchter',
+    description: 'Stimmungsvolle Beleuchtung im Ratskeller',
+    image: '/images/Ratskeller/Gastrofotos Sammy/Ratskeller__55A7288.webp',
+  },
+  {
+    id: 43,
+    category: 'essen-trinken',
+    title: 'Ratskeller Gastraum',
+    description: 'Eingedeckter Gastraum im historischen Ratskeller',
+    image: '/images/Ratskeller/Gastrofotos Sammy/Ratskeller__55A7301.webp',
+  },
+  {
+    id: 44,
+    category: 'essen-trinken',
+    title: 'Speisen und Dolle Molle',
+    description: 'Regionale Spezialitäten und frisch Gezapftes',
+    image: '/images/Ratskeller/Gastrofotos Sammy/Ratskeller__55A7320.webp',
+  },
+  {
+    id: 45,
+    category: 'essen-trinken',
+    title: 'Buffet im Ratskeller',
+    description: 'Vielfältiges Buffet im Gewölbekeller',
+    image: '/images/Ratskeller/Gastrofotos Sammy/Ratskeller__55A7351.webp',
+  },
+  {
+    id: 46,
+    category: 'essen-trinken',
+    title: 'Detailaufnahme Dolle Molle',
+    description: 'Frisch gezapft aus der Brauerei Friedrichshagen',
+    image: '/images/Ratskeller/Gastrofotos Sammy/Ratskeller__55A7361.webp',
+  },
+  {
+    id: 47,
+    category: 'essen-trinken',
+    title: 'Regionale Küche im Ratskeller',
+    description: 'Saisonale Gerichte aus der Region',
+    image: '/images/Ratskeller/Gastrofotos Sammy/Ratskeller__55A7388.webp',
+  },
 ];
 
 export default function GaleriePage() {
@@ -324,7 +359,7 @@ export default function GaleriePage() {
           </h1>
           <p className="text-lg text-neutral-600 max-w-2xl">
             Räume und Events auf einen Blick. Bilder sagen mehr als viele Worte.
-            In der Galerie erhältst du einen Eindruck davon, wie vielfältig das
+            In der Galerie erhalten Sie einen Eindruck davon, wie vielfältig das
             Rathaus Friedrichshagen genutzt werden kann, von festlich gedeckten
             Tafeln über Tagungssetups bis hin zu Konzert- und Kulturabenden.
           </p>
@@ -403,11 +438,11 @@ export default function GaleriePage() {
             Infos mitnehmen und Event planen
           </h2>
           <p className="text-lg text-neutral-600 mb-8 leading-relaxed">
-            Alle Fakten auf einen Blick und der direkte Weg zur Anfrage. Wenn du
-            die wichtigsten Informationen gern gesammelt haben möchtest, kannst
-            du dir eine Übersicht mit Räumen, Kapazitäten und Beispielpauschalen
-            herunterladen. Oder du gehst direkt den nächsten Schritt und schickst
-            uns deine Anfrage.
+            Alle Fakten auf einen Blick und der direkte Weg zur Anfrage. Wenn Sie
+            die wichtigsten Informationen gern gesammelt haben möchten, können
+            Sie sich eine Übersicht mit Räumen, Kapazitäten und Beispielpauschalen
+            herunterladen. Oder Sie gehen direkt den nächsten Schritt und schicken
+            uns Ihre Anfrage.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

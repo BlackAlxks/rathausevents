@@ -44,21 +44,26 @@ const roomGalleries = {
     { src: '/images/Party/Party_55A6675.webp', alt: 'Party im Ratskeller' },
     { src: '/images/Party/Party_55A7097.webp', alt: 'Event im Ratskeller' },
     { src: '/images/Party/Party_55A6677.webp', alt: 'Konzert im Ratskeller' },
+    { src: '/images/Ratskeller/Gastrofotos Sammy/Ratskeller__55A7288.webp', alt: 'Ratskeller Kerzenleuchter' },
+    { src: '/images/Ratskeller/Gastrofotos Sammy/Ratskeller__55A7301.webp', alt: 'Ratskeller Gastraum' },
+    { src: '/images/Ratskeller/Gastrofotos Sammy/Ratskeller__55A7320.webp', alt: 'Speisen und Dolle Molle' },
+    { src: '/images/Ratskeller/Gastrofotos Sammy/Ratskeller__55A7351.webp', alt: 'Buffet im Ratskeller' },
+    { src: '/images/Ratskeller/Gastrofotos Sammy/Ratskeller__55A7361.webp', alt: 'Detailaufnahme Dolle Molle' },
+    { src: '/images/Ratskeller/Gastrofotos Sammy/Ratskeller__55A7388.webp', alt: 'Regionale Küche im Ratskeller' },
   ],
   hoftheke: [
-    { src: '/images/Hoftheke/Hoftheke_55A8738-Pano.webp', alt: 'Hoftheke Panorama' },
     { src: '/images/Hoftheke/Hoftheke_55A8821-Pano.webp', alt: 'Hoftheke Weitwinkel' },
+    { src: '/images/Hoftheke/Hoftheke_55A8738-Pano.webp', alt: 'Hoftheke Panorama' },
     { src: '/images/Hoftheke/Hoftheke_XX!_55A9788-Panorama.webp', alt: 'Hoftheke 360°' },
     { src: '/images/Hoftheke/Hoftheke_555A7081.webp', alt: 'Hoftheke' },
     { src: '/images/Hoftheke/Hoftheke_55A9612.webp', alt: 'Hoftheke Innenraum' },
-    { src: '/images/Hoftheke/Hoftheke_55A9885.webp', alt: 'Hoftheke Sommerfest' },
     { src: '/images/Hoftheke/Hoftheke_Hoftheke Rustikal.webp', alt: 'Hoftheke Rustikal' },
     { src: '/images/Hoftheke/Hoftheke_Hoftheke3.webp', alt: 'Hoftheke Ambiente' },
     { src: '/images/Hoftheke/Hoftheke_03.webp', alt: 'Hoftheke Detail' },
   ],
   buergermeisterzimmer: [
-    { src: '/images/Bürgermeisterzimmer/Bürgermeisterzimmer_20160615-IMG_0361.webp', alt: 'Historisches Bürgermeisterzimmer' },
     { src: '/images/Bürgermeisterzimmer/Bürgermeisterzimmer_IMG_0292.webp', alt: 'Bürgermeisterzimmer Detail' },
+    { src: '/images/Bürgermeisterzimmer/Bürgermeisterzimmer_20160615-IMG_0361.webp', alt: 'Historisches Bürgermeisterzimmer' },
     { src: '/images/Bürgermeisterzimmer/Bürgermeisterzimmer_IMG_0294.webp', alt: 'Bürgermeisterzimmer Salon' },
   ],
 };
@@ -86,10 +91,10 @@ export default function Home() {
         <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
           <div className="text-center text-white px-4 max-w-4xl">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 drop-shadow-lg">
-              Rathaus Friedrichshagen
+              Eventlocation im ehemaligen Rathaus Friedrichshagen
             </h1>
-            <p className="text-xl sm:text-2xl lg:text-3xl font-light mb-8 drop-shadow-lg">
-              Ihre Eventlocation im Herzen von Berlin
+            <p className="text-base sm:text-lg font-light mb-8 drop-shadow-lg opacity-80">
+              Hinweis: Wir sind kein Bürgeramt.
             </p>
             <div className="flex flex-wrap gap-4 justify-center pointer-events-auto">
               <Link href="/kontakt">
@@ -128,7 +133,7 @@ export default function Home() {
                   onMouseEnter={(e) => {
                     e.currentTarget.style.backgroundColor = 'transparent';
                     e.currentTarget.style.borderColor = 'white';
-                    e.currentTarget.style.color = 'var(--color-primary)';
+                    e.currentTarget.style.color = 'white';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.backgroundColor = 'white';
@@ -150,11 +155,11 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-6 max-w-xl">
               <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900">
-                Was das Rathaus Friedrichshagen besonders macht
+                Was das ehemalige Rathaus Friedrichshagen besonders macht
               </h2>
               <div className="space-y-4 text-neutral-700 leading-relaxed">
                 <p>
-                  Das historische Rathaus Friedrichshagen bietet die ideale Kulisse für Ihre Firmenveranstaltung oder private Feier. Ob Sommerfest, Weihnachtsfeier, Teamevent, Geburtstag oder Hochzeit – wir schaffen den passenden Rahmen für Ihre Veranstaltung.
+                  Das ehemalige Rathaus Friedrichshagen, heute eine Event- und Kulturlocation, bietet die ideale Kulisse für Ihre Firmenveranstaltung oder private Feier. Ob Sommerfest, Weihnachtsfeier, Teamevent, Geburtstag oder Hochzeit – wir schaffen den passenden Rahmen für Ihre Veranstaltung.
                 </p>
                 <p>
                   Unsere flexiblen Räumlichkeiten lassen sich individuell kombinieren und auf Ihre Bedürfnisse abstimmen. Von intimen Zusammenkünften mit 10 Personen bis zu großen Feiern mit bis zu 200 Gästen passen wir die Raumkonfiguration genau an Ihr Event an.
@@ -225,8 +230,8 @@ export default function Home() {
             >
               <div className="relative aspect-video">
                 <SmartImage
-                  src="/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-27.webp"
-                  alt="Hochzeitsfeier im Alten Ratssaal mit Gästen"
+                  src="/images/Ratssaal/IMG_9209.webp"
+                  alt="Alter Ratssaal mit Stuck und hohen Decken"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
@@ -288,7 +293,7 @@ export default function Home() {
             >
               <div className="relative aspect-video">
                 <SmartImage
-                  src="/images/Hoftheke/Hoftheke_55A8738-Pano.webp"
+                  src="/images/Hoftheke/Hoftheke_55A8821-Pano.webp"
                   alt="Panoramaaufnahme der Hoftheke mit angrenzendem Innenhof"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -316,8 +321,8 @@ export default function Home() {
             >
               <div className="relative aspect-video">
                 <SmartImage
-                  src="/images/Bürgermeisterzimmer/Bürgermeisterzimmer_20160615-IMG_0361.webp"
-                  alt="Historisches Bürgermeisterzimmer mit Holzvertäfelung und klassischem Mobiliar"
+                  src="/images/Bürgermeisterzimmer/Bürgermeisterzimmer_IMG_0292.webp"
+                  alt="Bürgermeisterzimmer mit hellem Ambiente"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
@@ -345,7 +350,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
-              In vier Schritten von der Idee zum fertigen Event
+              In 4 Schritten von der Idee zum unvergesslichen Erlebnis
             </h2>
             <p className="text-lg text-neutral-600">
               Wir begleiten Sie durch den gesamten Planungsprozess – mit persönlicher Beratung und professioneller Umsetzung.
@@ -359,7 +364,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4">
-              Warum Veranstalter gern mit uns arbeiten
+              Warum Veranstalter sich für uns entscheiden
             </h2>
             <p className="text-lg text-neutral-600">
               Verlässliche Planung, professionelle Umsetzung und ein eingespieltes Team.
@@ -446,12 +451,10 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-6">
-                Catering & Gastronomie
+                Brau- und Genusswerkstatt Friedrichshagen
               </h2>
               <p className="text-lg text-neutral-700 leading-relaxed mb-6">
-                In Zusammenarbeit mit der Brauerei Friedrichshagen bieten wir Ihnen
-                professionelle Gastronomie für Ihre Veranstaltung – von kleinen
-                Snacks bis zu mehrgängigen Menüs.
+                Von der Planung begleiten wir Ihre Veranstaltung kulinarisch.
               </p>
               <div className="space-y-3 mb-6">
                 <div className="flex items-start gap-3">
@@ -488,6 +491,11 @@ export default function Home() {
                   <Button style={{ backgroundColor: 'var(--color-primary)', color: 'white' }} className="hover:opacity-90">
                     <Download className="mr-2 h-4 w-4" />
                     Buffet-Angebote (PDF)
+                  </Button>
+                </a>
+                <a href="https://www.brauerei-friedrichshagen.de" target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" style={{ borderColor: 'var(--color-primary)', color: 'var(--color-primary)' }} className="hover:opacity-80">
+                    Brauerei Friedrichshagen
                   </Button>
                 </a>
               </div>
@@ -572,7 +580,7 @@ export default function Home() {
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
-                      Kaffeespezialitäten & Tee
+                      Kaffee & Tee
                     </li>
                   </ul>
                 </div>
@@ -595,7 +603,7 @@ export default function Home() {
                 <div className="border border-neutral-200 rounded-lg p-4">
                   <div className="flex justify-between items-start mb-2">
                     <h4 className="font-bold text-neutral-900">Getränkepauschale Doll Regional</h4>
-                    <span className="font-semibold text-sm" style={{ color: 'var(--color-primary)' }}>50,00 € p.P.</span>
+                    <span className="font-semibold text-sm" style={{ color: 'var(--color-primary)' }}>54,00 € p.P.</span>
                   </div>
                   <ul className="space-y-1 text-sm text-neutral-700">
                     <li className="flex items-start gap-2">
@@ -605,6 +613,11 @@ export default function Home() {
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-accent)' }} />
                       Berliner Spezialitäten & Longdrinks
+                    </li>
+                    <li className="flex items-start gap-2 mt-2 pt-2 border-t border-neutral-100">
+                      <span className="font-semibold text-sm" style={{ color: 'var(--color-primary)' }}>
+                        Inkl. Dolle Molle vom Fass
+                      </span>
                     </li>
                   </ul>
                 </div>
@@ -735,7 +748,7 @@ export default function Home() {
                 Lage & Anfahrt
               </h2>
               <p className="text-lg text-neutral-700 leading-relaxed mb-3">
-                Das Rathaus Friedrichshagen liegt an der Bölschestr. 87/88 im
+                Das ehemalige Rathaus Friedrichshagen liegt an der Bölschestr. 87/88 im
                 Berliner Südosten, in einem lebendigen Stadtteil mit viel
                 Geschichte, Gastronomie und Nähe zum Müggelsee. Ihre Gäste
                 erreichen das Haus mit der S-Bahn, Linie S3, Bahnhof

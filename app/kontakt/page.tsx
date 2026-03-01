@@ -72,7 +72,7 @@ ${formData.freitext ? `Weitere Wünsche:\n${formData.freitext}` : ''}
 
       window.location.href = mailtoLink;
 
-      alert('Vielen Dank! Dein E-Mail-Programm wird geöffnet. Bitte sende die vorausgefüllte E-Mail ab.');
+      alert('Vielen Dank! Ihr E-Mail-Programm wird geöffnet. Bitte senden Sie die vorausgefüllte E-Mail ab.');
 
       setFormData({
         anlass: '',
@@ -117,11 +117,11 @@ ${formData.freitext ? `Weitere Wünsche:\n${formData.freitext}` : ''}
             Kontakt und Anfrage
           </h1>
           <p className="text-lg text-neutral-600 leading-relaxed">
-            Ein paar Angaben genügen, den Rest klären wir gemeinsam. Nutze das
-            Formular, um uns die wichtigsten Eckdaten zu deiner geplanten
+            Ein paar Angaben genügen, den Rest klären wir gemeinsam. Nutzen Sie das
+            Formular, um uns die wichtigsten Eckdaten zu Ihrer geplanten
             Veranstaltung im Rathaus Friedrichshagen zu schicken. Je genauer
-            deine Angaben zu Anlass, Datum und Gästezahl sind, desto
-            zielgerichteter können wir dir Räume, Pauschalen und mögliche
+            Ihre Angaben zu Anlass, Datum und Gästezahl sind, desto
+            zielgerichteter können wir Ihnen Räume, Pauschalen und mögliche
             Abläufe vorschlagen.
           </p>
         </div>
@@ -132,7 +132,7 @@ ${formData.freitext ? `Weitere Wünsche:\n${formData.freitext}` : ''}
           <form onSubmit={handleSubmit} className="space-y-8">
             <div>
               <h2 className="text-2xl font-bold text-neutral-900 mb-6">
-                Dein Event
+                Ihr Event
               </h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
@@ -310,7 +310,7 @@ ${formData.freitext ? `Weitere Wünsche:\n${formData.freitext}` : ''}
                     {[
                       { value: 'basis', label: 'Basis (38,00 €)' },
                       { value: 'volle-kanne', label: 'Volle Kanne (47,50 €)' },
-                      { value: 'doll-regional', label: 'Doll Regional (50,00 €)' },
+                      { value: 'doll-regional', label: 'Doll Regional (54,00 €)' },
                       { value: 'beratung', label: 'Beratung gewünscht' },
                     ].map((option) => (
                       <div
@@ -382,7 +382,7 @@ ${formData.freitext ? `Weitere Wünsche:\n${formData.freitext}` : ''}
 
                 <div className="space-y-2">
                   <Label htmlFor="freitext">
-                    Was sollen wir über dein Event noch wissen?
+                    Was sollen wir über Ihr Event noch wissen?
                   </Label>
                   <Textarea
                     id="freitext"
@@ -456,7 +456,7 @@ ${formData.freitext ? `Weitere Wünsche:\n${formData.freitext}` : ''}
 
             <div className="bg-neutral-50 p-6 rounded-lg">
               <p className="text-sm text-neutral-600 leading-relaxed">
-                Wir nutzen deine Angaben ausschließlich zur Bearbeitung deiner
+                Wir nutzen Ihre Angaben ausschließlich zur Bearbeitung Ihrer
                 Anfrage und geben sie nicht an Dritte weiter.
               </p>
             </div>
@@ -480,8 +480,8 @@ ${formData.freitext ? `Weitere Wünsche:\n${formData.freitext}` : ''}
             Persönliche Ansprechpartner
           </h2>
           <p className="text-neutral-700 mb-6 leading-relaxed">
-            Fragen vorab? Wir sind erreichbar. Wenn du eine spezielle Frage hast
-            oder uns dein Vorhaben kurz am Telefon schildern möchtest, kannst du
+            Fragen vorab? Wir sind erreichbar. Wenn Sie eine spezielle Frage haben
+            oder uns Ihr Vorhaben kurz am Telefon schildern möchten, können Sie
             uns auch direkt kontaktieren.
           </p>
 

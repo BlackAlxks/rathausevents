@@ -7,23 +7,23 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const heroSlides = [
   {
     src: '/images/Außenansicht/Outside_rathaus_outside_view.webp',
-    alt: 'Außenansicht des historischen Rathauses Friedrichshagen',
+    alt: 'Außenansicht des ehemaligen Rathauses Friedrichshagen',
   },
   {
-    src: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-13.webp',
-    alt: 'Festlich gedeckte Tafel im Alten Ratssaal',
+    src: '/images/Ratssaal/IMG_9209.webp',
+    alt: 'Gedeckter Alter Ratssaal mit Stuck und hohen Decken',
   },
   {
     src: '/images/Party/Party_55A6675.webp',
-    alt: 'Party im Rathaus',
+    alt: 'Party im ehemaligen Rathaus',
   },
   {
     src: '/images/Ratskeller/Ratskeller__55A1776.webp',
     alt: 'Ratskeller mit gedeckten Tischen',
   },
   {
-    src: '/images/Weihnachtsfeier/Weihnachtsfeier2022.12.16. - Weihnachten_Rathaus FH©pctrbrln.com-14.webp',
-    alt: 'Weihnachtsfeier im Rathaus',
+    src: '/images/Hochzeiten/Hochzeit_2022.12.09. - Wedding Rathaus FH©pctrbrln.com-13.webp',
+    alt: 'Festlich gedeckte Hochzeitstafel im Alten Ratssaal',
   },
 ];
 
